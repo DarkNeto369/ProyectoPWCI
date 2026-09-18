@@ -1,0 +1,62 @@
+Router 1
+
+200
+
+{
+  "success": true,
+  "message": "Cursos obtenidos correctamente",
+  "data": [
+    {
+      "id": 1,
+      "nombre": "Desarrollo Web con PHP",
+      "descripcion": "Aprende a crear aplicaciones web con PHP.",
+      "precio": 499.99
+    },
+    {
+      "id": 2,
+      "nombre": "Introducción a JavaScript",
+      "descripcion": "Conceptos básicos de JavaScript.",
+      "precio": 299.99
+    }
+  ]
+}
+
+500
+
+{
+  "success": false,
+  "message": "Error al obtener los cursos",
+  "data": null
+}
+
+Router 2
+
+200
+
+{
+  "success": true,
+  "message": "Curso obtenido correctamente",
+  "data": {
+    "id": 1,
+    "nombre": "Desarrollo Web con PHP",
+    "descripcion": "Aprende a crear aplicaciones web con PHP.",
+    "precio": 499.99,
+    "duracion": "20 horas"
+  }
+}
+
+404
+
+{
+  "success": false,
+  "message": "Curso no encontrado",
+  "data": null
+}
+
+500
+
+{
+  "success": false,
+  "message": "Error interno del servidor",
+  "data": null
+}
