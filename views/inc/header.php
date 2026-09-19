@@ -1,9 +1,9 @@
 <header class="bg-emerald-500 text-emerald-950 shadow-md border-b border-emerald-300">
     <div class="container-fluid px-4 py-3 flex items-center justify-between gap-4">            
 
-<a href="#" class="text-3xl font-bold tracking-wider text-slate-800! no-underline! cursor-pointer shrink-0">
-    Cursos
-</a>
+        <a href="main.php" class="text-3xl font-bold tracking-wider text-slate-800! no-underline! cursor-pointer shrink-0">
+            Cursos
+        </a>
 
         <form class="flex max-w-md w-full gap-2 my-0" id="search-form">
             <input 
@@ -39,7 +39,7 @@
             >
 
                 <a 
-                    href="profile.html" 
+                    href="userCourses.php" 
                     class="block px-4 py-2 text-sm text-slate-800! hover:bg-emerald-100 hover:text-emerald-950 no-underline! transition-colors"
                 >
                     Mis cursos
@@ -76,7 +76,7 @@
                 <hr class="my-1 border-emerald-200" />
 
                 <a 
-                    href="loginSignup.html" 
+                    href="loginSignup.php" 
                     class="block px-4 py-2 text-sm text-rose-600! hover:bg-rose-50 hover:text-rose-600 no-underline! transition-colors"
                 >
                     Cerrar sesión
