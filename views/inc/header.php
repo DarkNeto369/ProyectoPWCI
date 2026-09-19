@@ -67,7 +67,7 @@
                 </a>
 
                 <a 
-                    href="profile.html" 
+                    href="profile.php" 
                     class="block px-4 py-2 text-sm text-slate-800! hover:bg-emerald-100 hover:text-emerald-950 no-underline! transition-colors"
                 >
                     Perfil
