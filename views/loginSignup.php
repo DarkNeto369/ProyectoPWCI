@@ -6,15 +6,15 @@
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="../src/output.css">
 </head>
-<body class="min-h-screen bg-gray-100 flex items-center justify-center">
+<body class="min-h-screen bg-emerald-300 flex items-center justify-center">
 
     <main class="w-full max-w-md px-6">
-        <section id="login" class="bg-white rounded-2xl shadow-lg p-8">
+        <section id="login" class="bg-emerald-100 rounded-2xl shadow-lg p-8">
             <h1 class="text-3xl font-bold text-center mb-2">
                 Iniciar sesión
             </h1>
             <p class="text-gray-500 text-center mb-8">
-                Inicia sesión en tu cuenta
+                
             </p>
             <form id="loginForm" class="space-y-5">
 
@@ -27,9 +27,9 @@
                         id="loginEmail"
                         name="email"
                         required
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg
-                               focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="correo@ejemplo.com"
+                        class="w-full px-4 py-3 border border-rose-500 rounded-lg
+                               focus:outline-none focus:ring-2 focus:ring-rose-300"
+                        placeholder="Correo electrónico"
                     >
                 </div>
 
@@ -42,15 +42,15 @@
                         id="loginPassword"
                         name="password"
                         required
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg
-                               focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="••••••••"
+                        class="w-full px-4 py-3 border border-rose-500 rounded-lg
+                               focus:outline-none focus:ring-2 focus:ring-rose-300"
+                        placeholder="Contraseña"
                     >
                 </div>
                 <button
                     type="submit"
-                    class="w-full bg-blue-600 text-white py-3 rounded-lg
-                           font-semibold hover:bg-blue-700 transition"
+                    class="w-full bg-rose-400 text-white py-3 rounded-lg
+                           font-semibold hover:bg-rose-300 transition"
                 >
                     Iniciar sesión
                 </button>
@@ -61,7 +61,7 @@
                 <button
                     id="showRegister"
                     type="button"
-                    class="text-blue-600 font-semibold hover:underline"
+                    class="text-rose-400 font-semibold hover:underline"
                 >
                     Regístrate
                 </button>
@@ -71,13 +71,12 @@
 
         <section
             id="register"
-            class="hidden bg-white rounded-2xl shadow-lg p-8"
+            class="hidden bg-emerald-100 rounded-2xl shadow-lg p-8"
         >
             <h1 class="text-3xl font-bold text-center mb-2">
                 Crear Cuenta
             </h1>
             <p class="text-gray-500 text-center mb-8">
-                Regístrate en la red social
             </p>
 
             <form id="registerForm" class="space-y-5">
@@ -85,10 +84,10 @@
                     <label for="profileImage" class="cursor-pointer">
                         <img
                             id="profilePreview"
-                            src="https://placehold.co/150x150"
+                            src="../assets/img/user_default.png"
                             alt="Imagen de perfil"
                             class="w-32 h-32 rounded-full object-cover
-                                   border-4 border-gray-200
+                                   border-4 border-slate-800
                                    hover:opacity-80 transition"
                         >
                     </label>
@@ -100,7 +99,7 @@
                         class="hidden"
                     >
                     <p class="text-sm text-gray-500 mt-3">
-                        Selecciona una imagen de perfil
+                        Imagen de perfil
                     </p>
                 </div>
 
@@ -116,9 +115,9 @@
                         id="username"
                         name="username"
                         required
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg
-                               focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Nombre de usuario"
+                        class="w-full px-4 py-3 border border-rose-500 rounded-lg
+                               focus:outline-none focus:ring-2 focus:ring-rose-300"
+                        placeholder="Nombre de Usuario"
                     >
                 </div>
 
@@ -135,9 +134,9 @@
                         id="registerEmail"
                         name="email"
                         required
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg
-                               focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="correo@ejemplo.com"
+                        class="w-full px-4 py-3 border border-rose-500 rounded-lg
+                               focus:outline-none focus:ring-2 focus:ring-rose-300"
+                        placeholder="Correo electrónico"
                     >
                 </div>
 
@@ -154,16 +153,16 @@
                         id="registerPassword"
                         name="password"
                         required
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg
-                               focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="••••••••"
+                        class="w-full px-4 py-3 border border-rose-500 rounded-lg
+                               focus:outline-none focus:ring-2 focus:ring-rose-300"
+                        placeholder="Contraseña"
                     >
                 </div>
 
                 <button
                     type="submit"
-                    class="w-full bg-blue-600 text-white py-3 rounded-lg
-                           font-semibold hover:bg-blue-700 transition"
+                    class="w-full bg-rose-400 text-white py-3 rounded-lg
+                           font-semibold hover:bg-rose-300 transition"
                 >
                     Registrarse
                 </button>
@@ -175,7 +174,7 @@
                 <button
                     id="showLogin"
                     type="button"
-                    class="text-blue-600 font-semibold hover:underline"
+                    class="text-rose-400 font-semibold hover:underline"
                 >
                     Inicia sesión
                 </button>

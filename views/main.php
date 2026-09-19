@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="../src/output.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 </head>
-<body>
+<body >
     <?php include 'inc/header.php'; ?>
+
+    <main class="bg-emerald-100">
 
     <!--Cursos recientes-->
 
-    <div class="container my-5">
-        <h2 class="mb-4">Cursos recientes</h2>
+    <div class="container">
+        <h3 class="mb-4 p-2 text-center">Cursos recientes</h3>
         <div id="cursosCarousel" class="carousel slide" data-bs-ride="carousel">
 
         <!-- Indicadores -->
@@ -119,7 +121,7 @@
         <!--Los mejor valorados-->
 
             <div class="container my-5">
-        <h2 class="mb-4">Los mejor valorados</h2>
+        <h2 class="mb-4 text-center">Los mejor valorados</h2>
         <div id="cursosCarousel" class="carousel slide" data-bs-ride="carousel">
 
         <!-- Indicadores -->
@@ -136,7 +138,7 @@
                 <div class="row g-4">
                     <div class="col-md-4">
                         <div class="card h-100">
-                            <img src="assets/1.png"
+                            <img src="../assets/img/1.png"
                                  class="card-img-top"
                                  alt="Curso de HTML y CSS">
                             <div class="card-body">
@@ -159,7 +161,7 @@
 
                     <div class="col-md-4">
                         <div class="card h-100">
-                            <img src="img/curso-javascript.jpg"
+                            <img src="../assets/img/1.png"
                                  class="card-img-top"
                                  alt="Curso de JavaScript">
                             <div class="card-body">
@@ -182,7 +184,7 @@
 
                     <div class="col-md-4">
                         <div class="card h-100">
-                            <img src="img/curso-php.jpg"
+                            <img src="../assets/img/1.png"
                                  class="card-img-top"
                                  alt="Curso de PHP">
                             <div class="card-body">
@@ -225,7 +227,7 @@
         <!--Los más vendidos-->
 
             <div class="container my-5">
-        <h2 class="mb-4">Los más vendidos</h2>
+        <h2 class="mb-4 text-center">Los más vendidos</h2>
         <div id="cursosCarousel" class="carousel slide" data-bs-ride="carousel">
 
         <!-- Indicadores -->
@@ -242,7 +244,7 @@
                 <div class="row g-4">
                     <div class="col-md-4">
                         <div class="card h-100">
-                            <img src="assets/1.png"
+                            <img src="../assets/img/1.png"
                                  class="card-img-top"
                                  alt="Curso de HTML y CSS">
                             <div class="card-body">
@@ -265,7 +267,7 @@
 
                     <div class="col-md-4">
                         <div class="card h-100">
-                            <img src="img/curso-javascript.jpg"
+                            <img src="../assets/img/1.png"
                                  class="card-img-top"
                                  alt="Curso de JavaScript">
                             <div class="card-body">
@@ -288,7 +290,7 @@
 
                     <div class="col-md-4">
                         <div class="card h-100">
-                            <img src="img/curso-php.jpg"
+                            <img src="../assets/img/1.png"
                                  class="card-img-top"
                                  alt="Curso de PHP">
                             <div class="card-body">
@@ -328,7 +330,9 @@
             <span class="carousel-control-next-icon"></span>
         </button>
 
-    </div>    
+    </div>
+
+    </main>
 
     <script src="../public/js/header.js"></script>
     <!--<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>-->
