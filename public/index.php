@@ -11,6 +11,8 @@ spl_autoload_register(function ($class) {
     require base_path(str_replace('\\', '/', $class) . '.php');
 });
 
+(new \Core\Middleware\Cors())->handle();
+
 require base_path('bootstrap.php');
 
 $router = new \Core\Router();
