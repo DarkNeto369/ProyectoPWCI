@@ -12,3 +12,4 @@
 
 // Mis rutas
 $router->post('/registro', 'controllers/registro.php');
+$router->post('/login', 'controllers/login.php');

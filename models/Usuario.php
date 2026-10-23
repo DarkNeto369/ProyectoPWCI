@@ -18,26 +18,30 @@ class Usuario
     // Buscar usuario por correo
     public function buscarPorCorreo($correo)
     {
-        $stmt = $this->conn->query(
+        $resultado = $this->conn->query(
             "SELECT * FROM {$this->tabla} WHERE correo = :correo",
-            ['correo' => $correo]
+            [
+                'correo' => $correo
+            ]
         );
 
-        return $stmt->first();
+        return $resultado->first();
     }
 
     // Buscar usuario por ID
     public function buscarPorId($id_usuario)
     {
-        $stmt = $this->conn->query(
+        $resultado = $this->conn->query(
             "SELECT * FROM {$this->tabla} WHERE id_usuario = :id_usuario",
-            ['id_usuario' => $id_usuario]
+            [
+                'id_usuario' => $id_usuario
+            ]
         );
 
-        return $stmt->first();
+        return $resultado->first();
     }
 
-    // Registrar usuario
+    // Registrar usuario mediante el stored procedure
     public function registrar($datos)
     {
         $sql = "CALL sp_usuarios(
@@ -68,9 +72,47 @@ class Usuario
 
         // Liberar los resultados pendientes del procedimiento
         while ($this->conn->statement->nextRowset()) {
-            // Consumir los conjuntos de resultados restantes
+            // Consumir resultados
         }
 
         return true;
+    }
+
+    // Buscar usuario para el login mediante el stored procedure
+    public function buscarParaLogin($correo)
+    {
+        $sql = "CALL sp_usuarios(
+            :opcion,
+            :id_usuario,
+            :imagen_perfil,
+            :nombre,
+            :apellido,
+            :genero,
+            :fecha_nacimiento,
+            :rol,
+            :correo,
+            :contra
+        )";
+
+        $resultado = $this->conn->query($sql, [
+            'opcion' => 2,
+            'id_usuario' => null,
+            'imagen_perfil' => null,
+            'nombre' => null,
+            'apellido' => null,
+            'genero' => null,
+            'fecha_nacimiento' => null,
+            'rol' => null,
+            'correo' => $correo,
+            'contra' => null
+        ]);
+
+        $usuario = $resultado->first();
+
+        while ($this->conn->statement->nextRowset()) {
+            // Consumir resultados pendientes
+        }
+
+        return $usuario;
     }
 }
