@@ -1,340 +1,806 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PWCI</title>
-    <link rel="stylesheet" href="../src/output.css">
+
+    <title>Cursos</title>
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/main.css">
+    <link rel="stylesheet" href="../public/css/header.css">
+    <link rel="stylesheet" href="../public/css/footer.css">   
 </head>
-<body >
+
+<body>
+
     <?php include 'inc/header.php'; ?>
 
-    <main class="bg-emerald-100">
+    <div class="container mt-5">
 
-    <!--Cursos recientes-->
+        <h2 class="mb-4">Cursos populares</h2>
 
-    <div class="container">
-        <h3 class="mb-4 p-2 text-center">Cursos recientes</h3>
-        <div id="cursosCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div id="cursosCarousel" class="carousel slide">
 
-        <!-- Indicadores -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#cursosCarousel"
-                    data-bs-slide-to="0" class="active"></button>
+            <div class="carousel-inner">
 
-            <button type="button" data-bs-target="#cursosCarousel"
-                    data-bs-slide-to="1"></button>
-        </div>
+                <!-- Página 1 -->
+                <div class="carousel-item active">
+                    <div class="row">
 
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <img src="../assets/img/1.png"
-                                 class="card-img-top"
-                                 alt="Curso de HTML y CSS">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    HTML y CSS desde cero
-                                </h5>
-                                <p class="card-text text-muted">
-                                    Juan Pérez
-                                </p>
-                                <div class="mb-2">
-                                    <span class="text-warning">★★★★★</span>
-                                    <small class="text-muted">(4.8)</small>
+                        <div class="col-md-3">
+
+                            <a href="detalle-curso.php">
+
+                                <div class="card">
+                                    <img src="https://picsum.photos/400/225?random=1"
+                                        class="card-img-top"
+                                        alt="Curso">
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            Desarrollo Web Completo
+                                        </h5>
+
+                                        <p class="card-text">
+                                            Juan Pérez
+                                        </p>
+
+                                        <p class="mb-2">
+                                            ⭐⭐⭐⭐⭐
+                                        </p>
+
+                                        <strong>$499 MXN</strong>
+                                    </div>
                                 </div>
-                                <h5 class="fw-bold">
-                                    $299 MXN
-                                </h5>
+
+
+                            </a>
+
+                                
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=2"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        JavaScript desde Cero
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Ana García
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐☆
+                                    </p>
+
+                                    <strong>$399 MXN</strong>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <img src="../assets/img/1.png"
-                                 class="card-img-top"
-                                 alt="Curso de JavaScript">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    JavaScript para principiantes
-                                </h5>
-                                <p class="card-text text-muted">
-                                    María López
-                                </p>
-                                <div class="mb-2">
-                                    <span class="text-warning">★★★★☆</span>
-                                    <small class="text-muted">(4.5)</small>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=3"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Python para Principiantes
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Carlos López
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐⭐
+                                    </p>
+
+                                    <strong>$599 MXN</strong>
                                 </div>
-                                <h5 class="fw-bold">
-                                    $399 MXN
-                                </h5>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <img src="../assets/img/1.png"
-                                 class="card-img-top"
-                                 alt="Curso de PHP">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    PHP y MySQL
-                                </h5>
-                                <p class="card-text text-muted">
-                                    Carlos Ramírez
-                                </p>
-                                <div class="mb-2">
-                                    <span class="text-warning">★★★★★</span>
-                                    <small class="text-muted">(4.9)</small>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=4"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        React.js Profesional
+                                    </h5>
+
+                                    <p class="card-text">
+                                        María Torres
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐☆
+                                    </p>
+
+                                    <strong>$699 MXN</strong>
                                 </div>
-                                <h5 class="fw-bold">
-                                    $499 MXN
-                                </h5>
                             </div>
                         </div>
+
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Anterior -->
-        <button class="carousel-control-prev"
+
+                <!-- Página 2 -->
+                <div class="carousel-item">
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=5"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        HTML y CSS
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Pedro Ramírez
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐⭐
+                                    </p>
+
+                                    <strong>$299 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=6"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Bootstrap 5
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Laura Martínez
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐☆
+                                    </p>
+
+                                    <strong>$349 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=7"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Node.js
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Diego Sánchez
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐⭐
+                                    </p>
+
+                                    <strong>$549 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=8"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Bases de Datos
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Sofía Hernández
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐☆
+                                    </p>
+
+                                    <strong>$449 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Flecha izquierda -->
+            <button
+                class="carousel-control-prev"
                 type="button"
                 data-bs-target="#cursosCarousel"
                 data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
 
-        <!-- Siquiente -->
-        <button class="carousel-control-next"
+                <span class="btn btn-dark">
+                    &#10094;
+                </span>
+
+                <span class="visually-hidden">
+                    Anterior
+                </span>
+            </button>
+
+            <!-- Flecha derecha -->
+            <button
+                class="carousel-control-next"
                 type="button"
                 data-bs-target="#cursosCarousel"
                 data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
 
-        <!--Los mejor valorados-->
+                <span class="btn btn-dark">
+                    &#10095;
+                </span>
 
-            <div class="container my-5">
-        <h2 class="mb-4 text-center">Los mejor valorados</h2>
-        <div id="cursosCarousel" class="carousel slide" data-bs-ride="carousel">
+                <span class="visually-hidden">
+                    Siguiente
+                </span>
+            </button>
 
-        <!-- Indicadores -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#cursosCarousel"
-                    data-bs-slide-to="0" class="active"></button>
-
-            <button type="button" data-bs-target="#cursosCarousel"
-                    data-bs-slide-to="1"></button>
         </div>
 
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <img src="../assets/img/1.png"
-                                 class="card-img-top"
-                                 alt="Curso de HTML y CSS">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    HTML y CSS desde cero
-                                </h5>
-                                <p class="card-text text-muted">
-                                    Juan Pérez
-                                </p>
-                                <div class="mb-2">
-                                    <span class="text-warning">★★★★★</span>
-                                    <small class="text-muted">(4.8)</small>
-                                </div>
-                                <h5 class="fw-bold">
-                                    $299 MXN
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <img src="../assets/img/1.png"
-                                 class="card-img-top"
-                                 alt="Curso de JavaScript">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    JavaScript para principiantes
-                                </h5>
-                                <p class="card-text text-muted">
-                                    María López
-                                </p>
-                                <div class="mb-2">
-                                    <span class="text-warning">★★★★☆</span>
-                                    <small class="text-muted">(4.5)</small>
-                                </div>
-                                <h5 class="fw-bold">
-                                    $399 MXN
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <img src="../assets/img/1.png"
-                                 class="card-img-top"
-                                 alt="Curso de PHP">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    PHP y MySQL
-                                </h5>
-                                <p class="card-text text-muted">
-                                    Carlos Ramírez
-                                </p>
-                                <div class="mb-2">
-                                    <span class="text-warning">★★★★★</span>
-                                    <small class="text-muted">(4.9)</small>
+
+
+        <h2 class="mb-4">Cursos populares</h2>
+
+        <div id="cursosCarousel" class="carousel slide">
+
+            <div class="carousel-inner">
+
+                <!-- Página 1 -->
+                <div class="carousel-item active">
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=1"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Desarrollo Web Completo
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Juan Pérez
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐⭐
+                                    </p>
+
+                                    <strong>$499 MXN</strong>
                                 </div>
-                                <h5 class="fw-bold">
-                                    $499 MXN
-                                </h5>
                             </div>
                         </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=2"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        JavaScript desde Cero
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Ana García
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐☆
+                                    </p>
+
+                                    <strong>$399 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=3"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Python para Principiantes
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Carlos López
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐⭐
+                                    </p>
+
+                                    <strong>$599 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=4"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        React.js Profesional
+                                    </h5>
+
+                                    <p class="card-text">
+                                        María Torres
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐☆
+                                    </p>
+
+                                    <strong>$699 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Anterior -->
-        <button class="carousel-control-prev"
+
+                <!-- Página 2 -->
+                <div class="carousel-item">
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=5"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        HTML y CSS
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Pedro Ramírez
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐⭐
+                                    </p>
+
+                                    <strong>$299 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=6"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Bootstrap 5
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Laura Martínez
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐☆
+                                    </p>
+
+                                    <strong>$349 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=7"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Node.js
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Diego Sánchez
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐⭐
+                                    </p>
+
+                                    <strong>$549 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=8"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Bases de Datos
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Sofía Hernández
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐☆
+                                    </p>
+
+                                    <strong>$449 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Flecha izquierda -->
+            <button
+                class="carousel-control-prev"
                 type="button"
                 data-bs-target="#cursosCarousel"
                 data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
 
-        <!-- Siquiente -->
-        <button class="carousel-control-next"
+                <span class="btn btn-dark">
+                    &#10094;
+                </span>
+
+                <span class="visually-hidden">
+                    Anterior
+                </span>
+            </button>
+
+            <!-- Flecha derecha -->
+            <button
+                class="carousel-control-next"
                 type="button"
                 data-bs-target="#cursosCarousel"
                 data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
 
-        <!--Los más vendidos-->
+                <span class="btn btn-dark">
+                    &#10095;
+                </span>
 
-            <div class="container my-5">
-        <h2 class="mb-4 text-center">Los más vendidos</h2>
-        <div id="cursosCarousel" class="carousel slide" data-bs-ride="carousel">
+                <span class="visually-hidden">
+                    Siguiente
+                </span>
+            </button>
 
-        <!-- Indicadores -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#cursosCarousel"
-                    data-bs-slide-to="0" class="active"></button>
-
-            <button type="button" data-bs-target="#cursosCarousel"
-                    data-bs-slide-to="1"></button>
         </div>
 
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <img src="../assets/img/1.png"
-                                 class="card-img-top"
-                                 alt="Curso de HTML y CSS">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    HTML y CSS desde cero
-                                </h5>
-                                <p class="card-text text-muted">
-                                    Juan Pérez
-                                </p>
-                                <div class="mb-2">
-                                    <span class="text-warning">★★★★★</span>
-                                    <small class="text-muted">(4.8)</small>
-                                </div>
-                                <h5 class="fw-bold">
-                                    $299 MXN
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <img src="../assets/img/1.png"
-                                 class="card-img-top"
-                                 alt="Curso de JavaScript">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    JavaScript para principiantes
-                                </h5>
-                                <p class="card-text text-muted">
-                                    María López
-                                </p>
-                                <div class="mb-2">
-                                    <span class="text-warning">★★★★☆</span>
-                                    <small class="text-muted">(4.5)</small>
-                                </div>
-                                <h5 class="fw-bold">
-                                    $399 MXN
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <img src="../assets/img/1.png"
-                                 class="card-img-top"
-                                 alt="Curso de PHP">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    PHP y MySQL
-                                </h5>
-                                <p class="card-text text-muted">
-                                    Carlos Ramírez
-                                </p>
-                                <div class="mb-2">
-                                    <span class="text-warning">★★★★★</span>
-                                    <small class="text-muted">(4.9)</small>
+        <h2 class="mb-4">Cursos populares</h2>
+
+        <div id="cursosCarousel" class="carousel slide">
+
+            <div class="carousel-inner">
+
+                <!-- Página 1 -->
+                <div class="carousel-item active">
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=1"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Desarrollo Web Completo
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Juan Pérez
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐⭐
+                                    </p>
+
+                                    <strong>$499 MXN</strong>
                                 </div>
-                                <h5 class="fw-bold">
-                                    $499 MXN
-                                </h5>
                             </div>
                         </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=2"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        JavaScript desde Cero
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Ana García
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐☆
+                                    </p>
+
+                                    <strong>$399 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=3"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Python para Principiantes
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Carlos López
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐⭐
+                                    </p>
+
+                                    <strong>$599 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=4"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        React.js Profesional
+                                    </h5>
+
+                                    <p class="card-text">
+                                        María Torres
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐☆
+                                    </p>
+
+                                    <strong>$699 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Anterior -->
-        <button class="carousel-control-prev"
+
+                <!-- Página 2 -->
+                <div class="carousel-item">
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=5"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        HTML y CSS
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Pedro Ramírez
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐⭐
+                                    </p>
+
+                                    <strong>$299 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=6"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Bootstrap 5
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Laura Martínez
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐☆
+                                    </p>
+
+                                    <strong>$349 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=7"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Node.js
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Diego Sánchez
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐⭐
+                                    </p>
+
+                                    <strong>$549 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="https://picsum.photos/400/225?random=8"
+                                    class="card-img-top"
+                                    alt="Curso">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        Bases de Datos
+                                    </h5>
+
+                                    <p class="card-text">
+                                        Sofía Hernández
+                                    </p>
+
+                                    <p class="mb-2">
+                                        ⭐⭐⭐⭐☆
+                                    </p>
+
+                                    <strong>$449 MXN</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Flecha izquierda -->
+            <button
+                class="carousel-control-prev"
                 type="button"
                 data-bs-target="#cursosCarousel"
                 data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
 
-        <!-- Siquiente -->
-        <button class="carousel-control-next"
+                <span class="btn btn-dark">
+                    &#10094;
+                </span>
+
+                <span class="visually-hidden">
+                    Anterior
+                </span>
+            </button>
+
+            <!-- Flecha derecha -->
+            <button
+                class="carousel-control-next"
                 type="button"
                 data-bs-target="#cursosCarousel"
                 data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
+
+                <span class="btn btn-dark">
+                    &#10095;
+                </span>
+
+                <span class="visually-hidden">
+                    Siguiente
+                </span>
+            </button>
+
+        </div>
 
     </div>
 
-    </main>
+    <!-- Parte 2 -->
 
-    <script src="../public/js/header.js"></script>
-    <!--<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>-->
+
+
+    <!-- Parte 3 -->
+
+
+
+
+
+
+
+
+
+    <?php include 'inc/footer.php'; ?>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../public/footer.js"></script>
+
 </body>
 </html>

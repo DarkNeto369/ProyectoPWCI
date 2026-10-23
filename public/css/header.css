@@ -1,0 +1,29 @@
+.navbar {
+        padding: 12px 30px;
+    }
+
+.logo {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.search-container {
+    width: 500px;
+}
+
+.profile-img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.profile-img:hover {
+    opacity: 0.8;
+}
+
+.dropdown-menu {
+    min-width: 180px;
+}

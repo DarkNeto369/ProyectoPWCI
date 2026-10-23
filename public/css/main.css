@@ -1,0 +1,11 @@
+body {
+    background-color: aqua;
+}
+    
+.carousel-control-prev {
+    left: -60px;
+}
+
+.carousel-control-next {
+    right: -60px;
+}

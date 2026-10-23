@@ -1,0 +1,21 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.course-header {
+    background-color: blue;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.level-card {
+    background-color: pink;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 28px;
+    font-weight: bold;
+}

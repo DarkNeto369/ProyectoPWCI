@@ -1,42 +1,43 @@
-<footer class="bg-emerald-500 text-emerald-950 border-t border-emerald-300 mt-10">
-    <div class="container-fluid px-4 py-6">
+<!-- FOOTER -->
+<footer class="footer">
 
-        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="container">
 
-            <div>
-                <h3 class="text-xl font-bold text-slate-800">
-                    Cursos
-                </h3>
-                <p class="text-sm text-emerald-950">
-                    Aprende, crea y comparte tus conocimientos.
-                </p>
+        <div class="row">
+
+            <!-- Columna 1 -->
+            <div class="col-md-4 mb-4">
+                <h5>Plataforma</h5>
+
+                <a href="#">Cursos</a>
             </div>
 
-            <div class="flex gap-5">
-                <a href="#" class="text-sm text-emerald-950 hover:text-rose-500 no-underline transition-colors">
-                    Inicio
-                </a>
 
-                <a href="#" class="text-sm text-emerald-950 hover:text-rose-500 no-underline transition-colors">
-                    Cursos
-                </a>
+            <!-- Columna 2 -->
+            <div class="col-md-4 mb-4">
+                <h5>Recursos</h5>
 
-                <a href="#" class="text-sm text-emerald-950 hover:text-rose-500 no-underline transition-colors">
-                    Contacto
-                </a>
+                <a href="#">Centro de ayuda</a>
+            </div>
 
-                <a href="#" class="text-sm text-emerald-950 hover:text-rose-500 no-underline transition-colors">
-                    Ayuda
-                </a>
+
+            <!-- Columna 3 -->
+            <div class="col-md-4 mb-4">
+                <h5>Empresa</h5>
+
+                <a href="#">Sobre nosotros</a>
             </div>
 
         </div>
 
-        <hr class="my-4 border-emerald-300">
 
-        <p class="text-center text-sm text-emerald-950">
-            © 2026 Cursos. Todos los derechos reservados.
-        </p>
+        <!-- Parte inferior -->
+        <div class="footer-bottom">
+            <p class="mb-0">
+                &copy; <span id="year"></span> Mi plataforma de cursos.
+            </p>
+        </div>
 
     </div>
+
 </footer>

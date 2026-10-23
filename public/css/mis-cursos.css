@@ -1,0 +1,19 @@
+.curso-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 100%;
+}
+
+.curso-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.curso-imagen {
+    height: 180px;
+    object-fit: cover;
+}
+
+.curso-link {
+    text-decoration: none;
+    color: inherit;
+}
