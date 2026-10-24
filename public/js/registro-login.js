@@ -79,7 +79,10 @@ document.getElementById("formLogin").addEventListener("submit", function (event)
             "success"
         );
 
+        // Página principal con su ruta
         console.log("Respuesta del login:", resultado.datos);
+
+        window.location.href = "/ProyectoPWCI/public/main";
 
         
     })
