@@ -44,3 +44,6 @@ $router->get('/api/cursos', 'controllers/api/cursos/recientes.php');
 $router->get('/api/cursos/instructor', 'controllers/api/cursos/instructor.php');
 
 $router->get('/api/cursos/detalle', 'controllers/api/cursos/detalle.php');
+
+// PayPal
+$router->post('/api/paypal/prueba', 'test/prueba_paypal.php');
