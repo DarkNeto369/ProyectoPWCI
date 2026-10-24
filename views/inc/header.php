@@ -1,6 +1,6 @@
 <!-- HEADER -->
 <header>
-    <nav class="navbar navbar-expand-lg bg-light border-bottom">
+    <nav class="navbar navbar-expand-lg border-bottom">
 
         <!-- LOGO -->
         <a class="navbar-brand" href="#">

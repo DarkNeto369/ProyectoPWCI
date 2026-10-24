@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
         btnSiguiente.classList.toggle('d-none', !variasPaginas);
     }
 
-    // Consumir la API usando promesas
+    // API Promesas
     fetch(API_URL, {
         method: 'GET',
         headers: {
@@ -133,7 +133,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .then(function (datos) {
 
-        // Admite tanto un arreglo JSON como { cursos: [...] }
         const cursos = Array.isArray(datos)
             ? datos
             : datos.cursos;

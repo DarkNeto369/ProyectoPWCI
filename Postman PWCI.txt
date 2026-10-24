@@ -1,0 +1,106 @@
+Agregar Usuario
+
+POST http://localhost/ProyectoPWCI/public/registro
+
+{
+    "correo": "carlos@gmail.com",
+    "contra": "123",
+    "nombre": "Carlos",
+    "apellido": "Lopez",
+    "rol": "estudiante"
+}
+
+{
+    "correo": "anas@gmail.com",
+    "contra": "123",
+    "nombre": "Ana",
+    "apellido": "Villarreal",
+    "rol": "instructor"
+}
+
+
+Login
+
+POST http://localhost/ProyectoPWCI/public/login
+
+
+{
+  "correo": "carlos@gmail.com",
+  "contra": "123"
+}
+
+{
+  "correo": "anas@gmail.com",
+  "contra": "123"
+}
+
+{
+  "correo": "ersagon39@gmail.com",
+  "contra": "1"
+}
+
+API Cursos
+
+POST http://localhost/ProyectoPWCI/public/api/cursos
+GET
+
+{
+    "id_instructor": 2,
+    "categoria": "programacion",
+    "titulo": "Desarrollo web completo",
+    "descripcion": "Curso de HTML, CSS y JavaScript",
+    "costo": 499.00,
+    "imagen": null
+}
+
+{
+    "id_instructor": 2,
+    "categoria": "programacion",
+    "titulo": "Curso de PHP",
+    "descripcion": "Curso de PHP de cero a héroe",
+    "costo": 699.00,
+    "imagen": null
+}
+
+{
+    "id_instructor": 2,
+    "categoria": "programacion",
+    "titulo": "Curso de MySQL",
+    "descripcion": "Curso de bases de datos relacionales",
+    "costo": 299.00,
+    "imagen": null
+}
+
+{
+    "id_instructor": 3,
+    "categoria": "programacion",
+    "titulo": "Curso de OpenGL moderno",
+    "descripcion": "Curso de Gráficas computacionales",
+    "costo": 199.00,
+    "imagen": null
+}
+
+{
+    "id_instructor": 3,
+    "categoria": "arte 3d",
+    "titulo": "Modelado de personajes",
+    "descripcion": "Crea un personaje 3D completo",
+    "costo": 199.00,
+    "imagen": null
+}
+
+Obtener cursos
+
+GET
+
+http://localhost/ProyectoPWCI/public/api/cursos/instructor?id_instructor=2
+
+http://localhost/ProyectoPWCI/public/api/cursos/instructor?id_instructor=3
+
+API PayPal
+
+POST http://localhost/ProyectoPWCI/public/api/paypal/prueba
+
+sb-gnqfq53534499@personal.example.com
+
+c^Q>X]2t
