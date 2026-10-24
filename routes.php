@@ -34,3 +34,13 @@ $router->get('/prueba-admin', 'test/prueba_admin.php')
 
 
 $router->get('/main', 'views/main.php')->only('auth');
+
+
+// Rutas de la API propia de cursos
+$router->post('/api/cursos', 'controllers/api/cursos/agregar.php');
+
+$router->get('/api/cursos', 'controllers/api/cursos/recientes.php');
+
+$router->get('/api/cursos/instructor', 'controllers/api/cursos/instructor.php');
+
+$router->get('/api/cursos/detalle', 'controllers/api/cursos/detalle.php');
