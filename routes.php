@@ -14,28 +14,6 @@
 $router->post('/registro', 'controllers/registro.php');
 $router->post('/login', 'controllers/login.php');
 
-// Cualquier usuario con sesión iniciada
-$router->get('/mis-cursos', 'controllers/mis_cursos.php')
-    ->only('auth');
-
-// Solo administradores
-$router->get('/administracion', 'controllers/administracion.php')
-    ->only('administrador');
-
-// Solo instructores
-$router->get('/mis-cursos-instructor', 'controllers/mis_cursos_instructor.php')
-    ->only('instructor');
-
-$router->get('/prueba-acceso', 'test/prueba_acceso.php')
-    ->only('auth');
-
-$router->get('/prueba-admin', 'test/prueba_admin.php')
-    ->only('administrador');
-
-
-$router->get('/main', 'views/main.php')->only('auth');
-
-
 // Rutas de la API propia de cursos
 $router->post('/api/cursos', 'controllers/api/cursos/agregar.php');
 
@@ -47,3 +25,27 @@ $router->get('/api/cursos/detalle', 'controllers/api/cursos/detalle.php');
 
 // PayPal
 $router->post('/api/paypal/prueba', 'test/prueba_paypal.php');
+
+$router->get('/paypal/retorno', 'test/prueba_paypal_retorno.php');
+
+
+
+
+
+// Cualquier usuario con sesión iniciada
+$router->get('/mis-cursos', 'controllers/mis_cursos.php')->only('auth');
+
+// Solo administradores
+$router->get('/administracion', 'controllers/administracion.php')->only('administrador');
+
+// Solo instructores
+$router->get('/mis-cursos-instructor', 'controllers/mis_cursos_instructor.php')->only('instructor');
+
+$router->get('/prueba-acceso', 'test/prueba_acceso.php')->only('auth');
+
+$router->get('/prueba-admin', 'test/prueba_admin.php')->only('administrador');
+
+
+$router->get('/main', 'views/main.php')->only('auth');
+
+
