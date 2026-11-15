@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,118 +7,117 @@
 
     <title>Detalle del curso</title>
 
-    <!-- Bootstrap -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/header.css">
     <link rel="stylesheet" href="../public/css/detalle-curso.css">
 </head>
 
 <body>
 
-    <!-- Contenedor principal -->
-    <div class="container py-5">
+    <?php include 'inc/header.php'; ?>
 
-        <!-- Información principal del curso -->
-        <section class="course-header mb-5">
+    <main class="container py-5">
 
-            <div class="row align-items-center">
+        <a href="/ProyectoPWCI/public/main" class="btn btn-volver mb-4">
+            ← Volver a los cursos
+        </a>
 
-                <!-- Información -->
-                <div class="col-md-8">
+        <div id="mensajeCurso" class="alert alert-info">
+            Cargando información del curso...
+        </div>
 
-                    <h1 id="courseTitle">
-                        Desarrollo Web desde Cero
-                    </h1>
+        <section id="detalleCurso" class="detalle-contenedor d-none">
 
-                    <p id="courseDescription" class="text-muted">
-                        Aprende los fundamentos del desarrollo web utilizando
-                        HTML, CSS, Bootstrap y JavaScript.
-                    </p>
+            <!-- Información principal -->
+            <div class="course-header mb-5">
 
-                    <p class="mb-0">
-                        <strong>Curso en línea</strong>
-                    </p>
+                <div class="row align-items-center g-4">
 
-                </div>
+                    <div class="col-lg-7">
 
-                <!-- Precio y botón -->
-                <div class="col-md-4 text-md-end mt-4 mt-md-0">
+                        <span class="etiqueta-curso">
+                            CURSO EN LÍNEA
+                        </span>
 
-                    <div id="coursePrice" class="price mb-3">
-                        $499 MXN
+                        <h1 id="courseTitle" class="course-title mt-3">
+                            Nombre del curso
+                        </h1>
+
+                        <p id="courseCategory" class="course-category">
+                            Categoría
+                        </p>
+
+                        <p id="courseDescription" class="course-description">
+                            Descripción del curso
+                        </p>
+
                     </div>
 
-                    <!--  "Continuar curso" si el usuario ya compró -->
-                    <button
-                        id="buyButton"
-                        type="button"
-                        class="btn btn-primary btn-lg w-100"
-                        onclick="buyCourse()"
-                    >
-                        Comprar curso
-                    </button>
+                    <div class="col-lg-5">
+
+                        <div class="course-image-container">
+                            <img
+                                id="courseImage"
+                                src="https://placehold.co/600x400?text=Curso"
+                                alt="Imagen del curso"
+                                class="course-image"
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row align-items-center mt-4 pt-4 course-footer">
+
+                    <div class="col-md-6">
+                        <p class="mb-1 text-muted">Precio del curso</p>
+
+                        <div id="coursePrice" class="price">
+                            $0 MXN
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mt-3 mt-md-0 text-md-end">
+
+                        <button
+                            id="buyButton"
+                            type="button"
+                            class="btn btn-comprar btn-lg"
+                        >
+                            Comprar curso
+                        </button>
+
+                    </div>
 
                 </div>
 
             </div>
 
-        </section>
+            <!-- Contenido del curso -->
+            <section class="contenido-section">
 
+                <div class="section-heading mb-4">
+                    <span class="etiqueta-curso">APRENDIZAJE</span>
 
-        <!-- Contenido del curso -->
-        <section>
+                    <h2>Contenido del curso</h2>
 
-            <h2 class="mb-4">
-                Contenido del curso
-            </h2>
+                    <p>
+                        Conoce los niveles que componen este curso.
+                    </p>
+                </div>
 
+                <div id="levelsContainer">
 
-            <!-- Nivel 1 -->
-            <div class="level-card">
+                    <!-- Los niveles se cargarán mediante JavaScript -->
 
-                <h4>
-                    Nivel 1: Introducción al desarrollo web
-                </h4>
+                </div>
 
-                <p class="text-muted mb-0">
-                    Aprende los conceptos básicos del desarrollo web,
-                    la estructura de una página y los fundamentos de HTML.
-                </p>
-
-            </div>
-
-
-            <!-- Nivel 2 -->
-            <div class="level-card">
-
-                <h4>
-                    Nivel 2: Diseño con CSS y Bootstrap
-                </h4>
-
-                <p class="text-muted mb-0">
-                    Aprende a darle diseño y estructura a tus páginas
-                    utilizando CSS y el framework Bootstrap.
-                </p>
-
-            </div>
-
-
-            <!-- Nivel 3 -->
-            <div class="level-card">
-
-                <h4>
-                    Nivel 3: JavaScript
-                </h4>
-
-                <p class="text-muted mb-0">
-                    Aprende los fundamentos de JavaScript y cómo agregar
-                    interactividad y comportamiento dinámico a tus páginas.
-                </p>
-
-            </div>
+            </section>
 
         </section>
 
-    </div>
+    </main>
 
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../public/js/detalle-curso.js"></script>

@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
 
     const listaCursos = document.getElementById('listaCursos');
@@ -5,10 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const btnAnterior = document.getElementById('btnCursosAnterior');
     const btnSiguiente = document.getElementById('btnCursosSiguiente');
 
-    // Endpoint de nuestra API
     const API_URL = '/ProyectoPWCI/public/api/cursos';
 
-    // Imagen de reemplazo cuando el curso no tiene imagen
     const IMAGEN_PLACEHOLDER =
         'https://placehold.co/400x225?text=Curso';
 
@@ -32,17 +31,17 @@ document.addEventListener('DOMContentLoaded', function () {
         imagen.style.objectFit = 'cover';
         imagen.alt = 'Imagen del curso';
 
-        // Usar placeholder si no hay imagen
-        imagen.src = curso.imagen || IMAGEN_PLACEHOLDER;
+        imagen.src = curso.imagen
+            ? '/ProyectoPWCI/public/' + curso.imagen
+            : IMAGEN_PLACEHOLDER;
 
-        // Si la imagen proporcionada no carga, usar placeholder
         imagen.addEventListener('error', function () {
             imagen.onerror = null;
             imagen.src = IMAGEN_PLACEHOLDER;
         });
 
         const cuerpo = document.createElement('div');
-        cuerpo.className = 'card-body';
+        cuerpo.className = 'card-body d-flex flex-column';
 
         const titulo = document.createElement('h5');
         titulo.className = 'card-title';
@@ -63,21 +62,36 @@ document.addEventListener('DOMContentLoaded', function () {
             ? costo.toLocaleString('es-MX', {
                 style: 'currency',
                 currency: 'MXN'
-              }) + ' MXN'
+            }) + ' MXN'
             : 'Precio no disponible';
 
-        cuerpo.append(titulo, categoria, descripcion, precio);
+        const botonDetalle = document.createElement('a');
+        botonDetalle.className = 'btn btn-detalle mt-auto align-self-start';
+        botonDetalle.textContent = 'Ver detalle';
+
+        botonDetalle.href =
+            '/ProyectoPWCI/public/detalle-curso?id_curso=' +
+            encodeURIComponent(curso.id_curso);
+
+        cuerpo.append(
+            titulo,
+            categoria,
+            descripcion,
+            precio,
+            botonDetalle
+        );
+
         tarjeta.append(imagen, cuerpo);
         columna.appendChild(tarjeta);
 
         return columna;
     }
 
-    function mostrarCursos(cursos) {
+    function mostrarCursos(lista) {
 
-        listaCursos.replaceChildren();
+        listaCursos.innerHTML = '';
 
-        if (!Array.isArray(cursos) || cursos.length === 0) {
+        if (lista.length === 0) {
             mostrarMensaje('Todavía no hay cursos disponibles.', 'info');
             btnAnterior.classList.add('d-none');
             btnSiguiente.classList.add('d-none');
@@ -87,34 +101,34 @@ document.addEventListener('DOMContentLoaded', function () {
         mensajeCursos.classList.add('d-none');
 
         // Agrupar los cursos de cuatro en cuatro
-        for (let i = 0; i < cursos.length; i += 4) {
+        for (let i = 0; i < lista.length; i += 4) {
 
-            const pagina = document.createElement('div');
-            pagina.className = 'carousel-item';
+            const elemento = document.createElement('div');
+            elemento.className = 'carousel-item';
 
             if (i === 0) {
-                pagina.classList.add('active');
+                elemento.classList.add('active');
             }
 
             const fila = document.createElement('div');
             fila.className = 'row';
 
-            cursos.slice(i, i + 4).forEach(function (curso) {
+            lista.slice(i, i + 4).forEach(function (curso) {
                 fila.appendChild(crearTarjeta(curso));
             });
 
-            pagina.appendChild(fila);
-            listaCursos.appendChild(pagina);
+            elemento.appendChild(fila);
+            listaCursos.appendChild(elemento);
         }
 
-        // Las flechas solo se necesitan si hay varias páginas
-        const variasPaginas = cursos.length > 4;
+        // Mostrar controles solamente si hay más de cuatro cursos
+        const hayVariasPaginas = lista.length > 4;
 
-        btnAnterior.classList.toggle('d-none', !variasPaginas);
-        btnSiguiente.classList.toggle('d-none', !variasPaginas);
+        btnAnterior.classList.toggle('d-none', !hayVariasPaginas);
+        btnSiguiente.classList.toggle('d-none', !hayVariasPaginas);
     }
 
-    // API Promesas
+    // Consultar la API
     fetch(API_URL, {
         method: 'GET',
         headers: {
@@ -138,7 +152,9 @@ document.addEventListener('DOMContentLoaded', function () {
             : datos.cursos;
 
         if (!Array.isArray(cursos)) {
-            throw new Error('La respuesta de la API no tiene el formato esperado.');
+            throw new Error(
+                'La respuesta de la API no tiene el formato esperado.'
+            );
         }
 
         mostrarCursos(cursos);
@@ -157,3 +173,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+
+
