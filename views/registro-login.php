@@ -9,9 +9,10 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/registro-login.css">
 </head>
 
-<body class="bg-light">
+<body class="pagina-registro">
 
     <div class="container">
         <div class="row justify-content-center align-items-center min-vh-100">
@@ -127,8 +128,9 @@
                                         <input
                                             type="file"
                                             id="imagenPerfil"
+                                            name="imagen_perfil"
                                             class="d-none"
-                                            accept="image/*"
+                                            accept="image/jpeg, image/png, image/webp"
                                         >
                                     </div>
 

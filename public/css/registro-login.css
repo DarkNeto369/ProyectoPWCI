@@ -1,0 +1,117 @@
+/* Fondo general */
+.pagina-registro {
+    background: linear-gradient(
+        135deg,
+        rgb(121, 255, 184),
+        rgb(185, 255, 215)
+    );
+    min-height: 100vh;
+}
+
+/* Tarjeta principal */
+.card {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+/* Contenido */
+.card-body {
+    padding: 35px !important;
+}
+
+/* Títulos */
+.card h2 {
+    color: rgb(242, 121, 97);
+    font-weight: 700;
+    margin-bottom: 30px !important;
+}
+
+/* Etiquetas */
+.form-label {
+    color: #444;
+    font-weight: 600;
+}
+
+/* Campos */
+.form-control,
+.form-select {
+    border: 1px solid #d6e9dc;
+    border-radius: 10px;
+    padding: 11px 14px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: rgb(29, 179, 102);
+    box-shadow: 0 0 0 0.2rem rgba(29, 179, 102, 0.15);
+}
+
+/* Botones principales */
+.btn-primary,
+.btn-success {
+    background-color: rgb(29, 179, 102);
+    border-color: rgb(29, 179, 102);
+    border-radius: 10px;
+    padding: 11px;
+    font-weight: 600;
+    color: white;
+}
+
+.btn-primary:hover,
+.btn-success:hover {
+    background-color: rgb(39, 212, 123);
+    border-color: rgb(39, 212, 123);
+    color: white;
+}
+
+/* Seleccionar imagen */
+.btn-outline-primary {
+    color: rgb(242, 121, 97);
+    border-color: rgb(242, 121, 97);
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.btn-outline-primary:hover {
+    background-color: rgb(242, 121, 97);
+    border-color: rgb(242, 121, 97);
+    color: white;
+}
+
+/* Imagen de perfil */
+#imagenPreview {
+    border: 4px solid rgb(121, 255, 184) !important;
+    padding: 3px;
+    background-color: white;
+}
+
+/* Enlaces para cambiar entre login y registro */
+.btn-link {
+    color: rgb(29, 179, 102);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    color: rgb(242, 121, 97);
+    text-decoration: underline;
+}
+
+/* Mensajes */
+#mensajeLogin,
+#mensajeRegistro {
+    border-radius: 8px;
+}
+
+/* Adaptación para celulares */
+@media (max-width: 576px) {
+    .card-body {
+        padding: 22px !important;
+    }
+
+    .card h2 {
+        font-size: 25px;
+    }
+}

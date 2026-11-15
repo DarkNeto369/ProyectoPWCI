@@ -91,12 +91,15 @@ document.getElementById("formLogin").addEventListener("submit", function (event)
     });
 });
 
-// Procesar registro
-document.getElementById("formRegistro").addEventListener("submit", function (event) {
 
+ // Procesar registro
+document.getElementById("formRegistro").addEventListener("submit", function (event) {
     event.preventDefault();
 
-    console.log("Formulario de registro interceptado");
+    const formulario = this;
+    const boton = formulario.querySelector('button[type="submit"]');
+
+    const archivoImagen = document.getElementById("imagenPerfil").files[0];
 
     const datos = {
         nombre: document.getElementById("nombre").value.trim(),
@@ -105,53 +108,59 @@ document.getElementById("formRegistro").addEventListener("submit", function (eve
         fecha_nacimiento: document.getElementById("fechaNacimiento").value,
         rol: document.getElementById("rol").value,
         correo: document.getElementById("registroCorreo").value.trim(),
-        contra: document.getElementById("registroPassword").value,
-
-        
-        imagen_perfil: null
+        contra: document.getElementById("registroPassword").value
     };
 
-    const mensaje = document.getElementById("mensajeRegistro");
-    mensaje.textContent = "";
+    const formularioDatos = new FormData();
+
+    Object.entries(datos).forEach(([campo, valor]) => {
+        formularioDatos.append(campo, valor);
+    });
+
+    if (archivoImagen) {
+        formularioDatos.append("imagen_perfil", archivoImagen);
+    }
+
+    boton.disabled = true;
+    boton.textContent = "Registrando...";
 
     fetch(`${API_URL}/registro`, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
         credentials: "same-origin",
-        body: JSON.stringify(datos)
+        body: formularioDatos
     })
-    .then(response => {
-        return response.json().then(datosRespuesta => ({
-            ok: response.ok,
-            datos: datosRespuesta
-        }));
-    })
-    .then(resultado => {
-        if (!resultado.ok) {
-            const datosRespuesta = resultado.datos;
+    .then(async response => {
+        const respuesta = await response.json();
 
-            let error = datosRespuesta.error ||
-                        datosRespuesta.mensaje ||
-                        "No se pudo registrar el usuario.";
-
-            if (Array.isArray(datosRespuesta.errores)) {
-                error = datosRespuesta.errores.join(" ");
-            }
-
-            throw new Error(error);
+        if (!response.ok) {
+            throw new Error(
+                respuesta.error ||
+                respuesta.mensaje ||
+                "No se pudo registrar el usuario."
+            );
         }
 
+        return respuesta;
+    })
+    .then(resultado => {
         mostrarMensaje(
             "mensajeRegistro",
-            resultado.datos.mensaje || "Usuario registrado correctamente.",
+            resultado.mensaje || "Usuario registrado correctamente.",
             "success"
         );
 
-        console.log("Respuesta del registro:", resultado.datos);
+        formulario.reset();
+
+        document.getElementById("imagenPreview").src =
+            "https://via.placeholder.com/150";
+
+        console.log("Respuesta del registro:", resultado);
     })
     .catch(error => {
         mostrarMensaje("mensajeRegistro", error.message, "danger");
+    })
+    .finally(() => {
+        boton.disabled = false;
+        boton.textContent = "Registrarse";
     });
 });
