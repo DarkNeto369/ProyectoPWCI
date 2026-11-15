@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const courseImage = document.getElementById('courseImage');
     const coursePrice = document.getElementById('coursePrice');
     const levelsContainer = document.getElementById('levelsContainer');
+    const buyButton = document.getElementById('buyButton');
 
     const API_URL = '/ProyectoPWCI/public/api/cursos/detalle';
 
@@ -19,6 +20,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Obtener el ID del curso desde la URL
     const parametros = new URLSearchParams(window.location.search);
     const idCurso = parametros.get('id_curso');
+
+    buyButton.addEventListener('click', function () {
+
+        window.location.href =
+            '/ProyectoPWCI/public/detalle-pago?id_curso=' +
+            encodeURIComponent(idCurso);
+
+    });
 
     function mostrarError(mensaje) {
         mensajeCurso.textContent = mensaje;
@@ -134,3 +143,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+

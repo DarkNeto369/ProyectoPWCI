@@ -50,7 +50,7 @@ $router->get('/main', 'views/main.php')->only('auth');
 
 $router->get('/detalle-curso', 'views/detalle-curso.php')->only('auth');
 
-
+$router->get('/detalle-pago', 'views/detalle-pago.php')->only('auth');
 
 
 
