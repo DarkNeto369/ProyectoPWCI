@@ -39,7 +39,7 @@ $router->get('/mis-cursos', 'controllers/mis_cursos.php')->only('auth');
 $router->get('/administracion', 'controllers/administracion.php')->only('administrador');
 
 // Solo instructores
-$router->get('/mis-cursos-instructor', 'controllers/mis_cursos_instructor.php')->only('instructor');
+$router->get('/mis-cursos-instructor', 'Controllers/mis-cursos-instructor.php')->only('instructor');
 
 $router->get('/prueba-acceso', 'test/prueba_acceso.php')->only('auth');
 

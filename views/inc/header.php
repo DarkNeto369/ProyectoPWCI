@@ -93,7 +93,7 @@ $rol = $usuario['rol'] ?? '';
                     </li>
 
                     <li>
-                        <a class="dropdown-item" href="mis-cursos.php">
+                        <a href="/ProyectoPWCI/public/mis-cursos-instructor">
                             Mis cursos
                         </a>
                     </li>

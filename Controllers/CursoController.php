@@ -333,7 +333,7 @@ public function agregar()
         }
     }
 
-    // 3. Obtener los cursos de un instructor
+    // 3. Obtener los cursos del instructor que inició sesión
     public function porInstructor()
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
@@ -342,15 +342,23 @@ public function agregar()
             ]);
         }
 
-        $idInstructor = $_GET['id_instructor'] ?? null;
+        // Obtener el ID desde la sesión
+        $idInstructor = $_SESSION['user_id'] ?? null;
 
         if (
             $idInstructor === null ||
             !ctype_digit((string) $idInstructor) ||
             (int) $idInstructor <= 0
         ) {
-            $this->responder(400, [
-                'error' => 'Debes proporcionar un id_instructor valido.'
+            $this->responder(401, [
+                'error' => 'Debes iniciar sesion para consultar tus cursos.'
+            ]);
+        }
+
+        // Verificar que sea instructor
+        if (($_SESSION['rol'] ?? '') !== 'instructor') {
+            $this->responder(403, [
+                'error' => 'No tienes permisos para consultar estos cursos.'
             ]);
         }
 
