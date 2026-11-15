@@ -1,56 +1,146 @@
+
+/* Fondo general */
+
 body {
-            background-color: #f5f6f8;
-        }
+    background: linear-gradient(
+        135deg,
+        rgb(121, 255, 184),
+        rgb(185, 255, 215)
+    );
+    min-height: 100vh;
+}
+
+/* Contenedor */
 
 .course-container {
-    max-width: 900px;
-    margin: 50px auto;
+    max-width: 950px;
+    padding-top: 55px;
+    padding-bottom: 60px;
 }
+
+/* Tarjeta */
 
 .course-card {
     border: none;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 22px;
+    background-color: white;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
 }
+
+/* Título principal */
+
+.main-title {
+    color: rgb(242, 121, 97);
+    font-weight: 800;
+    font-size: 2.2rem;
+}
+
+.subtitle {
+    color: #777;
+    margin-top: 10px;
+}
+
+/* Títulos de secciones */
 
 .section-title {
+    color: rgb(242, 121, 97);
+    font-weight: 700;
+}
+
+/* Etiquetas */
+
+.form-label {
     font-weight: 600;
+    color: #444;
 }
 
-.level-card {
-    border: 1px solid #dee2e6;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: #fff;
-}
+/* Campos */
 
-.video-preview {
-    width: 100%;
-    max-height: 350px;
+.form-control,
+.form-select,
+.input-group-text {
     border-radius: 10px;
-    margin-top: 15px;
-    display: none;
+    padding: 11px 14px;
 }
 
-.completed {
-    color: #198754;
+.form-control,
+.form-select {
+    border: 1px solid #dcdcdc;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: rgb(29, 179, 102);
+    box-shadow: 0 0 0 0.2rem rgba(29, 179, 102, 0.18);
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+/* Botón agregar nivel */
+
+.btn-agregar-nivel {
+    background-color: white;
+    color: rgb(29, 179, 102);
+    border: 2px solid rgb(29, 179, 102);
+    border-radius: 10px;
     font-weight: 600;
+    padding: 10px 20px;
+    transition: 0.2s;
 }
 
-.completed-icon {
-    display: none;
-}
-
-.level-number {
-    width: 35px;
-    height: 35px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: #0d6efd;
+.btn-agregar-nivel:hover {
+    background-color: rgb(29, 179, 102);
     color: white;
-    font-weight: bold;
-    margin-right: 10px;
+}
+
+/* Botón crear curso */
+
+.btn-crear-curso {
+    background-color: rgb(29, 179, 102);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.btn-crear-curso:hover {
+    background-color: rgb(39, 212, 123);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Separador */
+
+hr {
+    border-color: rgb(242, 121, 97);
+    opacity: 0.35;
+}
+
+/* Responsive */
+
+@media (max-width: 576px) {
+    .course-container {
+        padding-top: 25px;
+        padding-bottom: 30px;
+    }
+
+    .main-title {
+        font-size: 1.8rem;
+    }
+
+    .course-card .card-body {
+        padding: 25px !important;
+    }
+}
+
+video {
+    width: 100%;
+    max-width: 500px;
+    height: 280px;
+    object-fit: contain;
+    display: block;
 }

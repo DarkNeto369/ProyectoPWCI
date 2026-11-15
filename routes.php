@@ -64,3 +64,5 @@ $router->get('/main', 'views/main.php')->only('auth');
 $router->get('/cerrar-sesion', 'controllers/cerrar-sesion.php');
 
 
+// Crear curso (Solo instructores)
+$router->get('/crear-curso', 'views/crear-curso.php')->only('instructor');

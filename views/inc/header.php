@@ -87,7 +87,7 @@ $rol = $usuario['rol'] ?? '';
                 <?php elseif ($rol === 'instructor'): ?>
 
                     <li>
-                        <a class="dropdown-item" href="crear-curso.php">
+                        <a class="dropdown-item" href="/ProyectoPWCI/public/crear-curso">
                             Crear curso
                         </a>
                     </li>
