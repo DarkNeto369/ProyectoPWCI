@@ -145,16 +145,23 @@ document.getElementById("formRegistro").addEventListener("submit", function (eve
     .then(resultado => {
         mostrarMensaje(
             "mensajeRegistro",
-            resultado.mensaje || "Usuario registrado correctamente.",
+            "¡Registro exitoso! Sesión iniciada correctamente. Bienvenido, " +
+            (resultado.usuario.nombre || "usuario") + ".",
             "success"
         );
+
+        console.log("Usuario con sesión iniciada:", resultado.usuario);
+        console.log("Sesión iniciada correctamente.");
 
         formulario.reset();
 
         document.getElementById("imagenPreview").src =
             "https://via.placeholder.com/150";
 
-        console.log("Respuesta del registro:", resultado);
+        // Redirigir después de 3 segundos
+        setTimeout(() => {
+            window.location.href = `${API_URL}/main`;
+        }, 3000);
     })
     .catch(error => {
         mostrarMensaje("mensajeRegistro", error.message, "danger");

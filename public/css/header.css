@@ -14,10 +14,16 @@
 }
 
 .profile-img {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    object-fit: cover;
+    width: 45px !important;
+    height: 45px !important;
+    min-width: 45px !important;
+    min-height: 45px !important;
+
+    border-radius: 50% !important;
+    object-fit: cover !important;
+
+    border: 2px solid black;
+    display: block;
     cursor: pointer;
 }
 

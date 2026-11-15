@@ -49,3 +49,18 @@ $router->get('/prueba-admin', 'test/prueba_admin.php')->only('administrador');
 $router->get('/main', 'views/main.php')->only('auth');
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+$router->get('/cerrar-sesion', 'controllers/cerrar-sesion.php');
+
+

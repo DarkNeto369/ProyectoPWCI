@@ -97,64 +97,64 @@ class RegistroController
             error_log("ARCHIVOS RECIBIDOS: " . print_r($_FILES, true));
 
             // Procesar imagen de perfil
-$imagenPerfil = null;
+            $imagenPerfil = null;
 
-// Carpeta donde se guardarán las imágenes
-$carpeta = dirname(__DIR__) . '/public/uploads/perfiles/';
+            // Carpeta donde se guardarán las imágenes
+            $carpeta = dirname(__DIR__) . '/public/uploads/perfiles/';
 
-if (!is_dir($carpeta)) {
-    if (!mkdir($carpeta, 0775, true)) {
-        $this->responder(500, [
-            'error' => 'No se pudo crear la carpeta de imagenes.',
-            'ruta' => $carpeta
-        ]);
-    }
-}
+            if (!is_dir($carpeta)) {
+                if (!mkdir($carpeta, 0775, true)) {
+                    $this->responder(500, [
+                        'error' => 'No se pudo crear la carpeta de imagenes.',
+                        'ruta' => $carpeta
+                    ]);
+                }
+            }
 
-// Comprobar si se recibió una imagen
-if (isset($_FILES['imagen_perfil']) &&
-    $_FILES['imagen_perfil']['error'] !== UPLOAD_ERR_NO_FILE) {
+            // Comprobar si se recibió una imagen
+            if (isset($_FILES['imagen_perfil']) &&
+                $_FILES['imagen_perfil']['error'] !== UPLOAD_ERR_NO_FILE) {
 
-    if ($_FILES['imagen_perfil']['error'] !== UPLOAD_ERR_OK) {
-        $this->responder(400, [
-            'error' => 'Error al subir la imagen.',
-            'codigo' => $_FILES['imagen_perfil']['error']
-        ]);
-    }
+                if ($_FILES['imagen_perfil']['error'] !== UPLOAD_ERR_OK) {
+                    $this->responder(400, [
+                        'error' => 'Error al subir la imagen.',
+                        'codigo' => $_FILES['imagen_perfil']['error']
+                    ]);
+                }
 
-    // Formatos permitidos
-    $tiposPermitidos = [
-        'image/jpeg' => 'jpg',
-        'image/png' => 'png',
-        'image/webp' => 'webp'
-    ];
+                // Formatos permitidos
+                $tiposPermitidos = [
+                    'image/jpeg' => 'jpg',
+                    'image/png' => 'png',
+                    'image/webp' => 'webp'
+                ];
 
-    $tipoImagen = mime_content_type(
-        $_FILES['imagen_perfil']['tmp_name']
-    );
+                $tipoImagen = mime_content_type(
+                    $_FILES['imagen_perfil']['tmp_name']
+                );
 
-    if (!isset($tiposPermitidos[$tipoImagen])) {
-        $this->responder(400, [
-            'error' => 'El formato de imagen no es valido.'
-        ]);
-    }
+                if (!isset($tiposPermitidos[$tipoImagen])) {
+                    $this->responder(400, [
+                        'error' => 'El formato de imagen no es valido.'
+                    ]);
+                }
 
-    // Nombre único para evitar archivos repetidos
-    $nombreImagen = uniqid('perfil_', true) . '.' . $tiposPermitidos[$tipoImagen];
+                // Nombre único para evitar archivos repetidos
+                $nombreImagen = uniqid('perfil_', true) . '.' . $tiposPermitidos[$tipoImagen];
 
-    // Guardar imagen en el servidor
-    if (!move_uploaded_file(
-        $_FILES['imagen_perfil']['tmp_name'],
-        $carpeta . $nombreImagen
-    )) {
-        $this->responder(500, [
-            'error' => 'No se pudo guardar la imagen.'
-        ]);
-    }
+                // Guardar imagen en el servidor
+                if (!move_uploaded_file(
+                    $_FILES['imagen_perfil']['tmp_name'],
+                    $carpeta . $nombreImagen
+                )) {
+                    $this->responder(500, [
+                        'error' => 'No se pudo guardar la imagen.'
+                    ]);
+                }
 
-    // Ruta que se guardará en MySQL
-    $imagenPerfil = 'uploads/perfiles/' . $nombreImagen;
-}
+                // Ruta que se guardará en MySQL
+                $imagenPerfil = 'uploads/perfiles/' . $nombreImagen;
+            }
 
             // 6. Preparar los datos
             $datosUsuario = [
@@ -169,12 +169,30 @@ if (isset($_FILES['imagen_perfil']) &&
             ];
 
             // 7. Registrar mediante el modelo y el procedimiento almacenado
-            $usuarioModel->registrar($datosUsuario);
+$usuarioModel->registrar($datosUsuario);
 
-            // 8. Responder con JSON
-            $this->responder(201, [
-                'mensaje' => 'Usuario registrado correctamente.'
-            ]);
+// 8. Buscar al usuario recién registrado
+$usuario = $usuarioModel->buscarPorCorreo($correo);
+
+// 9. Iniciar sesión automáticamente
+if ($usuario) {
+    session_regenerate_id(true);
+
+    $_SESSION['user_id'] = $usuario['id_usuario'];
+    $_SESSION['rol'] = $usuario['rol'];
+}
+
+// 10. Responder con JSON
+$this->responder(201, [
+    'mensaje' => 'Usuario registrado correctamente.',
+    'usuario' => [
+        'id_usuario' => $usuario['id_usuario'],
+        'nombre' => $usuario['nombre'],
+        'apellido' => $usuario['apellido'],
+        'correo' => $usuario['correo'],
+        'rol' => $usuario['rol']
+    ]
+]);
 
         } catch (\Throwable $e) {
             error_log($e->getMessage());
