@@ -79,7 +79,7 @@ $rol = $usuario['rol'] ?? '';
                 <?php if ($rol === 'estudiante'): ?>
 
                     <li>
-                        <a class="dropdown-item" href="mis-cursos.php">
+                        <a class="dropdown-item" href="/ProyectoPWCI/public/mis-cursos">
                             Mis cursos
                         </a>
                     </li>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,62 +8,52 @@
 
     <title>Mis cursos</title>
 
-    <!-- Bootstrap -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/header.css">
     <link rel="stylesheet" href="../public/css/mis-cursos.css">
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header class="bg-dark text-white py-3 mb-4">
-        <div class="container">
+    <!-- HEADER COMPARTIDO -->
+    <?php include 'inc/header.php'; ?>
 
-            <div class="d-flex justify-content-between align-items-center">
+    <main class="container mis-cursos-container">
 
-                <h1 class="h4 mb-0">
-                    Mi plataforma
+        <!-- ENCABEZADO -->
+        <section class="encabezado-cursos">
+            <div>
+                <span class="etiqueta-cursos">MI APRENDIZAJE</span>
+
+                <h1 id="tituloCursos">
+                    Mis cursos
                 </h1>
 
-                <span id="tipoUsuario" class="badge bg-primary">
-                    Usuario
-                </span>
+                <p id="descripcionCursos">
+                    Continúa aprendiendo y lleva tu conocimiento al siguiente nivel.
+                </p>
+            </div>
+        </section>
+
+        <!-- LISTA DE CURSOS -->
+        <section class="seccion-cursos">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Mis inscripciones</h2>
+            </div>
+
+            <div id="listaCursos" class="row g-4">
+
+                <!-- Los cursos serán agregados mediante JavaScript -->
 
             </div>
 
-        </div>
-    </header>
+            <!-- MENSAJE CUANDO NO HAY CURSOS -->
+            <div id="mensajeVacio" class="alert alert-info d-none">
+                No tienes cursos para mostrar.
+            </div>
 
-
-    <!-- CONTENIDO -->
-    <main class="container">
-
-        <div class="mb-4">
-            <h2 id="tituloCursos">
-                Mis cursos
-            </h2>
-
-            <p class="text-muted" id="descripcionCursos">
-                Cursos que has comprado.
-            </p>
-        </div>
-
-
-        <!-- LISTA DE CURSOS -->
-        <div id="listaCursos" class="row g-4">
-
-            <!--
-                Los cursos serán agregados mediante JavaScript.
-                PDatos vendrán de la API.
-            -->
-
-        </div>
-
-
-        <!-- MENSAJE CUANDO NO HAY CURSOS -->
-        <div id="mensajeVacio" class="alert alert-info d-none">
-            No tienes cursos para mostrar.
-        </div>
+        </section>
 
     </main>
 
@@ -70,5 +61,4 @@
     <script src="../public/js/mis-cursos.js"></script>
 
 </body>
-
 </html>

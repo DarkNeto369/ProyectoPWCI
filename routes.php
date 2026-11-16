@@ -33,7 +33,7 @@ $router->get('/paypal/retorno', 'test/prueba_paypal_retorno.php');
 
 
 // Cualquier usuario con sesión iniciada
-$router->get('/mis-cursos', 'controllers/mis_cursos.php')->only('auth');
+//$router->get('/mis-cursos', 'controllers/mis_cursos.php')->only('auth');
 
 // Solo administradores
 $router->get('/administracion', 'controllers/administracion.php')->only('administrador');
@@ -66,3 +66,11 @@ $router->get('/cerrar-sesion', 'controllers/cerrar-sesion.php');
 
 // Crear curso (Solo instructores)
 $router->get('/crear-curso', 'views/crear-curso.php')->only('instructor');
+
+    // Registrar la compra de un curso (Solo estudiantes)
+$router->post('/api/compras', 'controllers/comprar-curso.php')->only('estudiante');
+
+// Mis cursos (Solo estudiantes)
+$router->get('/mis-cursos', 'views/mis-cursos.php')->only('estudiante');
+
+$router->get('/api/mis-cursos', 'controllers/api/cursos/mis-cursos.php')->only('estudiante');
