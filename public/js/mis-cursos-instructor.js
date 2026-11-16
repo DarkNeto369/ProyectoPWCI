@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
         imagen.style.objectFit = 'cover';
         imagen.alt = 'Imagen del curso';
 
-        imagen.src = curso.imagen || IMAGEN_PLACEHOLDER;
+        imagen.src = curso.imagen
+            ? '/ProyectoPWCI/public/' + curso.imagen
+            : IMAGEN_PLACEHOLDER;
 
         imagen.addEventListener('error', function () {
             imagen.onerror = null;
@@ -37,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         const cuerpo = document.createElement('div');
-        cuerpo.className = 'card-body';
+        cuerpo.className = 'card-body d-flex flex-column';
 
         const titulo = document.createElement('h5');
         titulo.className = 'card-title';
@@ -61,7 +63,25 @@ document.addEventListener('DOMContentLoaded', function () {
               })
             : 'Precio no disponible';
 
-        cuerpo.append(titulo, categoria, descripcion, precio);
+        // Botón para consultar el detalle del curso
+        const botonDetalle = document.createElement('a');
+        botonDetalle.className =
+            'btn btn-detalle mt-auto align-self-start';
+
+        botonDetalle.textContent = 'Ver detalle';
+
+        botonDetalle.href =
+            '/ProyectoPWCI/public/detalle-curso-instructor?id_curso=' +
+            encodeURIComponent(curso.id_curso);
+
+        cuerpo.append(
+            titulo,
+            categoria,
+            descripcion,
+            precio,
+            botonDetalle
+        );
+
         tarjeta.append(imagen, cuerpo);
         columna.appendChild(tarjeta);
 

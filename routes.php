@@ -52,7 +52,7 @@ $router->get('/detalle-curso', 'views/detalle-curso.php')->only('auth');
 
 $router->get('/detalle-pago', 'views/detalle-pago.php')->only('auth');
 
-
+$router->get('/detalle-curso-instructor', 'views/detalle-curso-instructor.php')->only('instructor');
 
 
 
