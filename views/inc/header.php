@@ -13,7 +13,6 @@ if (isset($_SESSION['user_id'])) {
 
 // Imagen de perfil
 $imagenPerfil = '../public/' . ($usuario['imagen_perfil'] ?? '');
-    ($usuario['imagen_perfil'] ?? '');
 
 if (empty($usuario['imagen_perfil'])) {
     $imagenPerfil = 'https://i.pravatar.cc/100';
@@ -84,6 +83,12 @@ $rol = $usuario['rol'] ?? '';
                         </a>
                     </li>
 
+                    <li>
+                        <a class="dropdown-item" href="/ProyectoPWCI/public/mensajes">
+                            Mensajes
+                        </a>
+                    </li>
+
                 <?php elseif ($rol === 'instructor'): ?>
 
                     <li>
@@ -93,8 +98,14 @@ $rol = $usuario['rol'] ?? '';
                     </li>
 
                     <li>
-                        <a href="/ProyectoPWCI/public/mis-cursos-instructor">
+                        <a class="dropdown-item" href="/ProyectoPWCI/public/mis-cursos-instructor">
                             Mis cursos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item" href="/ProyectoPWCI/public/mensajes">
+                            Mensajes
                         </a>
                     </li>
 
@@ -124,3 +135,4 @@ $rol = $usuario['rol'] ?? '';
 
     </nav>
 </header>
+

@@ -1,0 +1,216 @@
+
+/* CONTENEDOR GENERAL */
+.mensajes-pagina {
+    background: linear-gradient(
+        135deg,
+        rgb(121, 255, 184),
+        rgb(185, 255, 215)
+    );
+    min-height: calc(100vh - 80px);
+    padding: 35px 0;
+}
+
+/* TÍTULOS */
+.mensajes-pagina .mensajes-container {
+    margin: 0 auto;
+}
+
+.mensajes-pagina .main-title {
+    color: rgb(242, 121, 97);
+    font-weight: bold;
+}
+
+.mensajes-pagina .subtitle {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* PANEL PRINCIPAL */
+.mensajes-pagina .mensajes-panel {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    background: white;
+    border-radius: 22px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+    min-height: 550px;
+    overflow: hidden;
+}
+
+/* CONVERSACIONES */
+.mensajes-pagina .conversaciones {
+    border-right: 1px solid #eee;
+    padding: 25px;
+    background: white;
+}
+
+.mensajes-pagina .seccion-titulo {
+    color: rgb(242, 121, 97);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.mensajes-pagina .conversacion-item {
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.2s;
+}
+
+.mensajes-pagina .conversacion-item:hover {
+    background: #f0fff6;
+}
+
+.mensajes-pagina .conversacion-activa {
+    background: #e2f9ec;
+}
+
+.mensajes-pagina .conversacion-item strong,
+.mensajes-pagina .conversacion-item small {
+    display: block;
+}
+
+.mensajes-pagina .conversacion-item strong {
+    color: rgb(242, 121, 97);
+}
+
+.mensajes-pagina .conversacion-item small {
+    color: #777;
+}
+
+.mensajes-pagina .conversacion-item p {
+    margin: 5px 0 0;
+    color: #555;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* CHAT */
+.mensajes-pagina .chat-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: white;
+}
+
+.mensajes-pagina .chat-header {
+    padding: 22px;
+    border-bottom: 1px solid #eee;
+}
+
+.mensajes-pagina .chat-header h5 {
+    color: rgb(242, 121, 97);
+    font-weight: bold;
+    margin: 0;
+}
+
+.mensajes-pagina .chat-header small {
+    color: #777;
+}
+
+.mensajes-pagina .chat-mensajes {
+    flex: 1;
+    padding: 25px;
+    min-height: 350px;
+    max-height: 450px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mensajes-pagina .chat-vacio,
+.mensajes-pagina .mensaje-vacio {
+    color: #777;
+    text-align: center;
+    padding: 30px 10px;
+}
+
+/* BURBUJAS */
+.mensajes-pagina .mensaje-burbuja {
+    max-width: 75%;
+    padding: 12px 16px;
+    border-radius: 15px;
+    overflow-wrap: anywhere;
+}
+
+.mensajes-pagina .mensaje-burbuja strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.mensajes-pagina .mensaje-burbuja p {
+    margin: 0 0 5px;
+}
+
+.mensajes-pagina .mensaje-burbuja small {
+    font-size: 11px;
+    color: #777;
+}
+
+.mensajes-pagina .mensaje-propio {
+    align-self: flex-end;
+    background: #d9f8e5;
+}
+
+.mensajes-pagina .mensaje-ajeno {
+    align-self: flex-start;
+    background: #f1f1f1;
+}
+
+/* FORMULARIO */
+.mensajes-pagina .chat-formulario {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.mensajes-pagina .chat-formulario input {
+    border-radius: 20px;
+    padding: 12px 18px;
+}
+
+.mensajes-pagina .btn-enviar {
+    background: rgb(29, 179, 102);
+    color: white;
+    border-radius: 20px;
+    padding: 10px 25px;
+    border: none;
+}
+
+.mensajes-pagina .btn-enviar:hover {
+    background: rgb(39, 212, 123);
+    color: white;
+}
+
+.mensajes-pagina .btn-enviar:disabled {
+    background: #aaa;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+    .mensajes-pagina .mensajes-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .mensajes-pagina .conversaciones {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .mensajes-pagina .chat-mensajes {
+        min-height: 300px;
+    }
+
+    .mensajes-pagina .mensaje-burbuja {
+        max-width: 90%;
+    }
+
+}
+
+

@@ -93,4 +93,13 @@ $router->get('/diploma', 'views/diploma.php')->only('estudiante');
 
 // Obtener los datos del diploma
 $router->get('/api/cursos/diploma', 'controllers/api/cursos/diploma.php')
+
+
+
     ->only('estudiante');
+
+    // Mensajes privados
+$router->get('/mensajes', 'views/mensajes.php')->only('auth');
+
+$router->get('/api-mensajes', 'controllers/mensajes.php')->only('auth');
+$router->post('/api-mensajes', 'controllers/mensajes.php')->only('auth');
