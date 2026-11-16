@@ -117,6 +117,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         </span>
 
+                        <a href="/ProyectoPWCI/public/aula-virtual?id_inscripcion=${curso.id_inscripcion}"
+                        class="btn btn-detalle mt-3">
+                            Entrar al curso
+                        </a>
+
                     </div>
                 </div>
             `;

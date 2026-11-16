@@ -162,4 +162,87 @@ class Inscripcion
 
         return $respuesta;
     }
+
+    // Recuperar los niveles de una inscripción
+    public function obtenerNiveles($idInscripcion, $idUsuario)
+    {
+        $sql = "CALL sp_progreso_niveles(
+            :opcion,
+            :id_inscripcion,
+            :id_usuario,
+            :id_nivel
+        )";
+
+        $resultado = $this->conn->query($sql, [
+            'opcion' => 2,
+            'id_inscripcion' => $idInscripcion,
+            'id_usuario' => $idUsuario,
+            'id_nivel' => null
+        ]);
+
+        $niveles = $resultado->get();
+
+        // Liberar resultados pendientes
+        while ($this->conn->statement->nextRowset()) {
+            // Consumir resultados
+        }
+
+        return $niveles;
+    }
+
+    // Marcar un nivel como completado
+    public function marcarNivelCompletado(
+        $idInscripcion,
+        $idUsuario,
+        $idNivel
+    ) {
+        $sql = "CALL sp_progreso_niveles(
+            :opcion,
+            :id_inscripcion,
+            :id_usuario,
+            :id_nivel
+        )";
+
+        $resultado = $this->conn->query($sql, [
+            'opcion' => 1,
+            'id_inscripcion' => $idInscripcion,
+            'id_usuario' => $idUsuario,
+            'id_nivel' => $idNivel
+        ]);
+
+        $respuesta = $resultado->first();
+
+        // Liberar resultados pendientes
+        while ($this->conn->statement->nextRowset()) {
+            // Consumir resultados
+        }
+
+        return $respuesta;
+    }
+
+    // Obtener los datos del diploma
+public function obtenerDiploma($idInscripcion, $idUsuario)
+{
+    $sql = "CALL sp_inscripciones(
+        :opcion,
+        :id_inscripcion,
+        :id_usuario,
+        :id_curso,
+        :niveles_completados
+    )";
+
+    $resultado = $this->conn->query($sql, [
+        'opcion' => 6,
+        'id_inscripcion' => $idInscripcion,
+        'id_usuario' => $idUsuario,
+        'id_curso' => null,
+        'niveles_completados' => null
+    ]);
+
+    $diploma = $resultado->first();
+
+    while ($this->conn->statement->nextRowset()) {}
+
+    return $diploma;
+}
 }

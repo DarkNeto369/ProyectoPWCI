@@ -99,53 +99,259 @@ class InscripcionController
     }
 
     // 2. Obtener los cursos inscritos del estudiante
-public function misCursos()
+    public function misCursos()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+            $this->responder(405, [
+                'error' => 'Metodo no permitido.'
+            ]);
+        }
+
+        // Obtener estudiante desde la sesión
+        $idUsuario = $_SESSION['user_id'] ?? null;
+
+        if (
+            $idUsuario === null ||
+            !ctype_digit((string) $idUsuario) ||
+            (int) $idUsuario <= 0
+        ) {
+            $this->responder(401, [
+                'error' => 'Debes iniciar sesion para consultar tus cursos.'
+            ]);
+        }
+
+        // Verificar que sea estudiante
+        if (($_SESSION['rol'] ?? '') !== 'estudiante') {
+            $this->responder(403, [
+                'error' => 'Solo los estudiantes pueden consultar sus cursos.'
+            ]);
+        }
+
+        try {
+
+            $inscripcionModel = new Inscripcion();
+
+            $cursos = $inscripcionModel->obtenerPorUsuario(
+                (int) $idUsuario
+            );
+
+            $this->responder(200, [
+                'cursos' => $cursos
+            ]);
+
+        } catch (\Throwable $e) {
+
+            error_log($e->getMessage());
+
+            $this->responder(500, [
+                'error' => 'Ocurrio un error al consultar tus cursos.'
+            ]);
+        }
+    }
+
+    // 3. Obtener los niveles de un curso inscrito
+    public function obtenerNiveles()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+            $this->responder(405, [
+                'error' => 'Metodo no permitido.'
+            ]);
+        }
+
+        $idUsuario = $_SESSION['user_id'] ?? null;
+
+        if (
+            $idUsuario === null ||
+            !ctype_digit((string) $idUsuario) ||
+            (int) $idUsuario <= 0
+        ) {
+            $this->responder(401, [
+                'error' => 'Debes iniciar sesion.'
+            ]);
+        }
+
+        if (($_SESSION['rol'] ?? '') !== 'estudiante') {
+            $this->responder(403, [
+                'error' => 'Solo los estudiantes pueden consultar los niveles.'
+            ]);
+        }
+
+        $idInscripcion = $_GET['id_inscripcion'] ?? null;
+
+        if (
+            $idInscripcion === null ||
+            !ctype_digit((string) $idInscripcion) ||
+            (int) $idInscripcion <= 0
+        ) {
+            $this->responder(400, [
+                'error' => 'Debes proporcionar un id_inscripcion valido.'
+            ]);
+        }
+
+        try {
+
+            $inscripcionModel = new Inscripcion();
+
+            $niveles = $inscripcionModel->obtenerNiveles(
+                (int) $idInscripcion,
+                (int) $idUsuario
+            );
+
+            $this->responder(200, [
+                'niveles' => $niveles
+            ]);
+
+        } catch (\Throwable $e) {
+
+            error_log($e->getMessage());
+
+            $this->responder(500, [
+                'error' => 'Ocurrio un error al consultar los niveles.'
+            ]);
+        }
+    }
+
+    // 4. Marcar un nivel como completado
+    public function marcarNivelCompletado()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            $this->responder(405, [
+                'error' => 'Metodo no permitido.'
+            ]);
+        }
+
+        $idUsuario = $_SESSION['user_id'] ?? null;
+
+        if (
+            $idUsuario === null ||
+            !ctype_digit((string) $idUsuario) ||
+            (int) $idUsuario <= 0
+        ) {
+            $this->responder(401, [
+                'error' => 'Debes iniciar sesion.'
+            ]);
+        }
+
+        if (($_SESSION['rol'] ?? '') !== 'estudiante') {
+            $this->responder(403, [
+                'error' => 'Solo los estudiantes pueden completar niveles.'
+            ]);
+        }
+
+        $datos = json_decode(file_get_contents('php://input'), true);
+
+        if (!is_array($datos)) {
+            $this->responder(400, [
+                'error' => 'Los datos enviados no son validos.'
+            ]);
+        }
+
+        $idInscripcion = $datos['id_inscripcion'] ?? null;
+        $idNivel = $datos['id_nivel'] ?? null;
+
+        if (
+            $idInscripcion === null ||
+            !ctype_digit((string) $idInscripcion) ||
+            (int) $idInscripcion <= 0
+        ) {
+            $this->responder(400, [
+                'error' => 'Debes proporcionar un id_inscripcion valido.'
+            ]);
+        }
+
+        if (
+            $idNivel === null ||
+            !ctype_digit((string) $idNivel) ||
+            (int) $idNivel <= 0
+        ) {
+            $this->responder(400, [
+                'error' => 'Debes proporcionar un id_nivel valido.'
+            ]);
+        }
+
+        try {
+
+            $inscripcionModel = new Inscripcion();
+
+            $resultado = $inscripcionModel->marcarNivelCompletado(
+                (int) $idInscripcion,
+                (int) $idUsuario,
+                (int) $idNivel
+            );
+
+            $this->responder(200, [
+                'mensaje' => 'Nivel marcado como completado.',
+                'resultado' => $resultado
+            ]);
+
+        } catch (\Throwable $e) {
+
+            error_log($e->getMessage());
+
+            if ($e->getCode() === '45000') {
+                $this->responder(400, [
+                    'error' => $e->getMessage()
+                ]);
+            }
+
+            $this->responder(500, [
+                'error' => 'Ocurrio un error al completar el nivel.'
+            ]);
+        }
+    }
+
+    // Obtener los datos del diploma
+public function diploma()
 {
     if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
         $this->responder(405, [
-            'error' => 'Metodo no permitido.'
+            'error' => 'Método no permitido.'
         ]);
     }
-
-    // Obtener estudiante desde la sesión
-    $idUsuario = $_SESSION['user_id'] ?? null;
 
     if (
-        $idUsuario === null ||
-        !ctype_digit((string) $idUsuario) ||
-        (int) $idUsuario <= 0
+        !isset($_SESSION['user_id']) ||
+        $_SESSION['rol'] !== 'estudiante'
     ) {
-        $this->responder(401, [
-            'error' => 'Debes iniciar sesion para consultar tus cursos.'
+        $this->responder(403, [
+            'error' => 'No tienes permiso para consultar este diploma.'
         ]);
     }
 
-    // Verificar que sea estudiante
-    if (($_SESSION['rol'] ?? '') !== 'estudiante') {
-        $this->responder(403, [
-            'error' => 'Solo los estudiantes pueden consultar sus cursos.'
+    $idInscripcion = $_GET['id_inscripcion'] ?? null;
+
+    if (!$idInscripcion || !ctype_digit((string) $idInscripcion)) {
+        $this->responder(400, [
+            'error' => 'Identificador de inscripción inválido.'
         ]);
     }
 
     try {
 
-        $inscripcionModel = new Inscripcion();
+        $modelo = new Inscripcion();
 
-        $cursos = $inscripcionModel->obtenerPorUsuario(
-            (int) $idUsuario
+        $diploma = $modelo->obtenerDiploma(
+            $idInscripcion,
+            $_SESSION['user_id']
         );
 
+        if (!$diploma) {
+            $this->responder(404, [
+                'error' => 'No se encontraron los datos del diploma.'
+            ]);
+        }
+
         $this->responder(200, [
-            'cursos' => $cursos
+            'mensaje' => 'Datos del diploma obtenidos correctamente.',
+            'diploma' => $diploma
         ]);
 
-    } catch (\Throwable $e) {
+    } catch (\PDOException $e) {
 
-        error_log($e->getMessage());
-
-        $this->responder(500, [
-            'error' => 'Ocurrio un error al consultar tus cursos.'
+        $this->responder(400, [
+            'error' => $e->getMessage()
         ]);
+
     }
 }
 

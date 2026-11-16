@@ -74,3 +74,23 @@ $router->post('/api/compras', 'controllers/comprar-curso.php')->only('estudiante
 $router->get('/mis-cursos', 'views/mis-cursos.php')->only('estudiante');
 
 $router->get('/api/mis-cursos', 'controllers/api/cursos/mis-cursos.php')->only('estudiante');
+
+
+
+// Obtener los niveles de un curso inscrito
+$router->get('/api/cursos/niveles', 'controllers/api/cursos/obtener-niveles.php')
+    ->only('estudiante');
+
+// Marcar un nivel como completado
+$router->post('/api/cursos/completar-nivel', 'controllers/api/cursos/completar-nivel.php')
+    ->only('estudiante');
+
+    // Aula virtual del estudiante
+$router->get('/aula-virtual', 'views/aula-virtual.php')->only('estudiante');
+
+// Mostrar diploma del estudiante
+$router->get('/diploma', 'views/diploma.php')->only('estudiante');
+
+// Obtener los datos del diploma
+$router->get('/api/cursos/diploma', 'controllers/api/cursos/diploma.php')
+    ->only('estudiante');

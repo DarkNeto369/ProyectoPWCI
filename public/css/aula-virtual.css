@@ -1,0 +1,202 @@
+
+/* Fondo general */
+body {
+    background: linear-gradient(
+        rgb(121, 255, 184),
+        rgb(185, 255, 215)
+    );
+    min-height: 100vh;
+}
+
+/* Contenedor principal */
+.aula-container {
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+/* Encabezado del curso */
+.encabezado-aula {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    border-left: 6px solid rgb(242, 121, 97);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.etiqueta-aula {
+    color: rgb(29, 179, 102);
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.encabezado-aula h1 {
+    color: rgb(242, 121, 97);
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.encabezado-aula p {
+    color: #555;
+    margin-bottom: 0;
+}
+
+/* Barra de progreso */
+.encabezado-aula .progress {
+    height: 12px;
+    border-radius: 10px;
+    background-color: #e9ecef;
+}
+
+.encabezado-aula .progress-bar {
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+/* Panel del video */
+.panel-video {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+.panel-video h2 {
+    color: rgb(29, 179, 102);
+    font-weight: bold;
+}
+
+/* Reproductor */
+.video-curso {
+    width: 100%;
+    max-height: 450px;
+    background-color: #111;
+    border-radius: 12px;
+    display: block;
+}
+
+/* Botón completar */
+#btnCompletarNivel {
+    background-color: rgb(29, 179, 102);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 22px;
+    font-weight: 600;
+}
+
+#btnCompletarNivel:hover {
+    background-color: rgb(39, 212, 123);
+}
+
+#btnCompletarNivel:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+/* Panel de niveles */
+.panel-niveles {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+.panel-niveles h2 {
+    color: rgb(242, 121, 97);
+    font-weight: bold;
+}
+
+/* Elementos individuales de niveles */
+.nivel-item {
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.nivel-item:hover {
+    background-color: #f0fff5;
+    border-color: rgb(29, 179, 102);
+}
+
+.nivel-item.activo {
+    background-color: #e8fff0;
+    border-color: rgb(29, 179, 102);
+    border-width: 2px;
+}
+
+.nivel-item.completado {
+    border-left: 5px solid rgb(29, 179, 102);
+}
+
+.nivel-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.nivel-item small {
+    color: #777;
+}
+
+/* Icono de completado */
+.icono-completado {
+    color: rgb(29, 179, 102);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Sección del diploma */
+.seccion-diploma {
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    border-left: 6px solid rgb(29, 179, 102);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.seccion-diploma h2 {
+    color: rgb(242, 121, 97);
+    font-weight: bold;
+}
+
+.seccion-diploma p {
+    color: #555;
+}
+
+#btnDiploma {
+    background-color: rgb(29, 179, 102);
+    border: none;
+    border-radius: 10px;
+    padding: 11px 25px;
+    font-weight: 600;
+}
+
+#btnDiploma:hover {
+    background-color: rgb(39, 212, 123);
+}
+
+/* Adaptación a celulares */
+@media (max-width: 768px) {
+
+    .aula-container {
+        padding-top: 20px;
+        padding-bottom: 35px;
+    }
+
+    .encabezado-aula,
+    .panel-video,
+    .panel-niveles {
+        padding: 20px;
+    }
+
+    .video-curso {
+        max-height: 280px;
+    }
+
+}

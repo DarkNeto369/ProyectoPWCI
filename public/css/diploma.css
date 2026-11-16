@@ -1,0 +1,165 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(rgb(121, 255, 184), rgb(185, 255, 215));
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.contenedor-diploma {
+    width: 100%;
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Área del diploma */
+.diploma {
+    width: 100%;
+    max-width: 1100px;
+    aspect-ratio: 1.414 / 1;
+
+    background-image: url('../img/diploma.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 9%;
+}
+
+/* Contenido */
+.contenido-diploma {
+    width: 100%;
+    text-align: center;
+    color: #333;
+}
+
+.contenido-diploma h1 {
+    font-size: clamp(25px, 4vw, 48px);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #244c3b;
+    margin-bottom: 25px;
+}
+
+.texto-introductorio,
+.texto-curso {
+    font-size: clamp(13px, 1.6vw, 20px);
+    margin-bottom: 15px;
+}
+
+.contenido-diploma h2 {
+    font-size: clamp(23px, 3.5vw, 40px);
+    color: #b47724;
+    font-weight: bold;
+    margin: 15px 0 25px;
+}
+
+.contenido-diploma h3 {
+    font-size: clamp(18px, 2.5vw, 30px);
+    color: #244c3b;
+    font-weight: bold;
+    margin: 15px 0 35px;
+}
+
+/* Datos inferiores */
+.datos-finales {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 35px;
+}
+
+.datos-finales div {
+    flex: 1;
+}
+
+.datos-finales strong {
+    display: block;
+    font-size: clamp(12px, 1.5vw, 18px);
+    color: #244c3b;
+    border-top: 1px solid #777;
+    padding-top: 10px;
+}
+
+.datos-finales p {
+    font-size: clamp(12px, 1.4vw, 17px);
+    margin-top: 8px;
+    color: #333;
+}
+
+/* Botones */
+.acciones-diploma {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.acciones-diploma .btn {
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+
+/* Impresión */
+@media print {
+
+    @page {
+        size: landscape;
+        margin: 0;
+    }
+
+    body {
+        background: white;
+    }
+
+    .contenedor-diploma {
+        min-height: auto;
+        padding: 0;
+    }
+
+    .diploma {
+        width: 100vw;
+        max-width: none;
+        height: 100vh;
+        aspect-ratio: auto;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .acciones-diploma {
+        display: none;
+    }
+}
+
+/* Pantallas pequeñas */
+@media (max-width: 600px) {
+
+    .contenedor-diploma {
+        padding: 20px 10px;
+    }
+
+    .diploma {
+        aspect-ratio: auto;
+        min-height: 450px;
+        padding: 12%;
+    }
+
+    .datos-finales {
+        gap: 15px;
+    }
+}
