@@ -103,3 +103,26 @@ $router->get('/mensajes', 'views/mensajes.php')->only('auth');
 
 $router->get('/api-mensajes', 'controllers/mensajes.php')->only('auth');
 $router->post('/api-mensajes', 'controllers/mensajes.php')->only('auth');
+
+
+
+
+// API de comentarios
+$router->post('/api/comentarios', 'controllers/api/comentarios/registrar.php')
+    ->only('estudiante');
+
+$router->get('/api/comentarios', 'controllers/api/comentarios/obtener.php');
+
+$router->post('/api/comentarios/eliminar', 'controllers/api/comentarios/eliminar.php')
+    ->only('administrador');
+
+
+    // API de calificaciones
+$router->post('/api/calificaciones', 'controllers/api/calificaciones/registrar.php')
+    ->only('estudiante');
+
+$router->get('/api/calificaciones', 'controllers/api/calificaciones/promedio.php');
+
+
+
+$router->get('/api/cursos/mejor-valorados', 'controllers/api/cursos/mejor-valorados.php');

@@ -47,6 +47,15 @@
                             Categoría
                         </p>
 
+                        <p id="courseInstructor" class="text-muted">
+                            Instructor:
+                        </p>
+
+                        <div class="mb-3">
+                            <div id="courseStars" class="text-warning fs-4"></div>
+                            <small id="courseRating" class="text-muted"></small>
+                        </div>
+
                         <p id="courseDescription" class="course-description">
                             Descripción del curso
                         </p>
@@ -95,7 +104,7 @@
             </div>
 
             <!-- Contenido del curso -->
-            <section class="contenido-section">
+            <section class="contenido-section mb-5">
 
                 <div class="section-heading mb-4">
                     <span class="etiqueta-curso">APRENDIZAJE</span>
@@ -107,9 +116,95 @@
                     </p>
                 </div>
 
-                <div id="levelsContainer">
+                <div id="levelsContainer"></div>
 
-                    <!-- Los niveles se cargarán mediante JavaScript -->
+            </section>
+
+            <!-- Calificaciones -->
+            <section class="mb-5" id="calificacionesSection">
+
+                <div class="section-heading mb-4">
+                    <span class="etiqueta-curso">OPINIONES</span>
+                    <h2>Calificaciones del curso</h2>
+                </div>
+
+                <div id="ratingSummary" class="mb-4">
+                    <!-- JavaScript insertará el promedio -->
+                </div>
+
+                <div id="ratingFormContainer" class="d-none">
+
+                    <h5>Califica este curso</h5>
+
+                    <form id="ratingForm">
+
+                        <div class="mb-3">
+                            <label for="ratingSelect" class="form-label">
+                                Tu calificación
+                            </label>
+
+                            <select id="ratingSelect" class="form-select" required>
+                                <option value="">Selecciona una calificación</option>
+                                <option value="5">5 - Excelente</option>
+                                <option value="4">4 - Muy bueno</option>
+                                <option value="3">3 - Bueno</option>
+                                <option value="2">2 - Regular</option>
+                                <option value="1">1 - Malo</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            Enviar calificación
+                        </button>
+
+                    </form>
+
+                    <div id="mensajeCalificacion" class="mt-3"></div>
+
+                </div>
+
+            </section>
+
+            <!-- Comentarios -->
+            <section class="mb-5" id="comentariosSection">
+
+                <div class="section-heading mb-4">
+                    <span class="etiqueta-curso">COMUNIDAD</span>
+                    <h2>Comentarios de los estudiantes</h2>
+                </div>
+
+                <div id="listaComentarios" class="mb-4">
+                    Cargando comentarios...
+                </div>
+
+                <div id="comentarioFormContainer" class="d-none">
+
+                    <h5>Deja tu comentario</h5>
+
+                    <form id="comentarioForm">
+
+                        <div class="mb-3">
+                            <label for="textoComentario" class="form-label">
+                                Escribe tu opinión
+                            </label>
+
+                            <textarea
+                                id="textoComentario"
+                                class="form-control"
+                                rows="4"
+                                maxlength="2000"
+                                required
+                                placeholder="Comparte tu experiencia con este curso..."
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            Publicar comentario
+                        </button>
+
+                    </form>
+
+                    <div id="mensajeComentario" class="mt-3"></div>
 
                 </div>
 
@@ -118,6 +213,11 @@
         </section>
 
     </main>
+
+    <!-- Identificar el rol de la sesión -->
+    <script>
+        window.ROL_USUARIO = <?= json_encode($_SESSION['rol'] ?? '') ?>;
+    </script>
 
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../public/js/detalle-curso.js"></script>

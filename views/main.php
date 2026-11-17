@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,7 +11,7 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../public/css/main.css">
     <link rel="stylesheet" href="../public/css/header.css">
-    <link rel="stylesheet" href="../public/css/footer.css">   
+    <link rel="stylesheet" href="../public/css/footer.css">
 </head>
 
 <body>
@@ -18,21 +19,24 @@
     <?php include 'inc/header.php'; ?>
 
     <div class="container mt-5">
-        
+
+        <!-- ================================= -->
+        <!-- CARRUSEL DE CURSOS RECIENTES -->
+        <!-- ================================= -->
+
         <h2 class="mb-4">Cursos Recientes</h2>
 
-        <!-- Mensajes de carga, error o ausencia de cursos -->
         <div id="mensajeCursos" class="alert alert-info" role="status">
             Cargando cursos...
         </div>
 
-        <!-- Carrusel dinámico -->
         <div id="cursosCarousel" class="carousel slide">
+
             <div class="carousel-inner" id="listaCursos">
                 <!-- JavaScript insertará aquí los cursos -->
             </div>
 
-            <!-- Controles: JavaScript los mostrará si son necesarios -->
+            <!-- Controles -->
             <button
                 class="carousel-control-prev d-none"
                 id="btnCursosAnterior"
@@ -54,13 +58,61 @@
                 <span class="btn btn-dark">&#10095;</span>
                 <span class="visually-hidden">Siguiente</span>
             </button>
+
         </div>
+
+
+        <!-- ================================= -->
+        <!-- CARRUSEL DE CURSOS MEJOR VALORADOS -->
+        <!-- ================================= -->
+
+        <h2 class="mb-4 mt-5">⭐ Cursos mejor valorados</h2>
+
+        <div id="mensajeMejorValorados" class="alert alert-info" role="status">
+            Cargando cursos mejor valorados...
+        </div>
+
+        <div id="mejorValoradosCarousel" class="carousel slide">
+
+            <div class="carousel-inner" id="listaMejorValorados">
+                <!-- JavaScript insertará aquí los cursos -->
+            </div>
+
+            <!-- Controles -->
+            <button
+                class="carousel-control-prev d-none"
+                id="btnMejorValoradosAnterior"
+                type="button"
+                data-bs-target="#mejorValoradosCarousel"
+                data-bs-slide="prev">
+
+                <span class="btn btn-dark">&#10094;</span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+
+            <button
+                class="carousel-control-next d-none"
+                id="btnMejorValoradosSiguiente"
+                type="button"
+                data-bs-target="#mejorValoradosCarousel"
+                data-bs-slide="next">
+
+                <span class="btn btn-dark">&#10095;</span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+
+        </div>
+
+    </div>
 
     <?php include 'inc/footer.php'; ?>
 
     <!-- Bootstrap JavaScript -->
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript de cursos -->
     <script src="../public/js/main.js"></script>
+
     <!--<script src="../public/footer.js"></script>-->
 
 </body>

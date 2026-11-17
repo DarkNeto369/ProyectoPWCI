@@ -3,308 +3,304 @@
 namespace Controllers;
 
 use Models\Curso;
+use Models\Calificacion;
 
 class CursoController
 {
     // 1. Agregar un curso con sus niveles, videos e imagen
-public function agregar()
-{
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        $this->responder(405, [
-            'error' => 'Metodo no permitido.'
-        ]);
-    }
-
-    // Obtener el instructor desde la sesión
-    $idInstructor = $_SESSION['user_id'] ?? null;
-
-    // Recibir los datos del formulario
-    $categoria = trim($_POST['categoria'] ?? '');
-    $titulo = trim($_POST['titulo'] ?? '');
-    $descripcion = trim($_POST['descripcion'] ?? '');
-    $costo = $_POST['costo'] ?? null;
-
-    // Validar instructor
-    if (
-        $idInstructor === null ||
-        !ctype_digit((string) $idInstructor) ||
-        (int) $idInstructor <= 0
-    ) {
-        $this->responder(401, [
-            'error' => 'Debes iniciar sesion para agregar un curso.'
-        ]);
-    }
-
-    // Validar que sea instructor
-    if (($_SESSION['rol'] ?? '') !== 'instructor') {
-        $this->responder(403, [
-            'error' => 'No tienes permisos para agregar cursos.'
-        ]);
-    }
-
-    // Validar campos del curso
-    if ($titulo === '') {
-        $this->responder(400, [
-            'error' => 'El titulo es obligatorio.'
-        ]);
-    }
-
-    if ($descripcion === '') {
-        $this->responder(400, [
-            'error' => 'La descripcion es obligatoria.'
-        ]);
-    }
-
-    if (
-        $costo === null ||
-        !is_numeric($costo) ||
-        !is_finite((float) $costo) ||
-        (float) $costo < 0
-    ) {
-        $this->responder(400, [
-            'error' => 'Debes proporcionar un costo valido.'
-        ]);
-    }
-
-    // Recibir los niveles
-    $niveles = json_decode($_POST['niveles'] ?? '', true);
-
-    if (
-        json_last_error() !== JSON_ERROR_NONE ||
-        !is_array($niveles) ||
-        count($niveles) < 1 ||
-        count($niveles) > 3
-    ) {
-        $this->responder(400, [
-            'error' => 'Debes proporcionar entre 1 y 3 niveles validos.'
-        ]);
-    }
-
-    // Recibir la imagen del curso
-    $imagen = $_FILES['imagen'] ?? null;
-
-    if (!$imagen || $imagen['error'] !== UPLOAD_ERR_OK) {
-        $this->responder(400, [
-            'error' => 'Debes seleccionar una imagen para el curso.'
-        ]);
-    }
-
-    // Recibir los videos
-    $videos = $_FILES['videos'] ?? null;
-
-    if (
-        !$videos ||
-        !isset($videos['name']) ||
-        count($videos['name']) !== count($niveles)
-    ) {
-        $this->responder(400, [
-            'error' => 'Debes proporcionar un video por cada nivel.'
-        ]);
-    }
-
-    // Carpetas de almacenamiento
-    $carpetaVideos = dirname(__DIR__) . '/public/uploads/videos/';
-    $carpetaImagenes = dirname(__DIR__) . '/public/uploads/imagen-cursos/';
-
-    // Crear carpeta de videos
-    if (
-        !is_dir($carpetaVideos) &&
-        !mkdir($carpetaVideos, 0775, true)
-    ) {
-        $this->responder(500, [
-            'error' => 'No se pudo crear la carpeta de videos.'
-        ]);
-    }
-
-    // Crear carpeta de imágenes
-    if (
-        !is_dir($carpetaImagenes) &&
-        !mkdir($carpetaImagenes, 0775, true)
-    ) {
-        $this->responder(500, [
-            'error' => 'No se pudo crear la carpeta de imagenes.'
-        ]);
-    }
-
-    $videosGuardados = [];
-    $imagenGuardada = null;
-    $nivelesCurso = [];
-
-    try {
-
-        // Procesar imagen del curso
-
-        if ($imagen['size'] > 5 * 1024 * 1024) {
-            throw new \Exception(
-                'La imagen debe pesar menos de 5 MB.'
-            );
+    public function agregar()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            $this->responder(405, [
+                'error' => 'Metodo no permitido.'
+            ]);
         }
 
-        $finfo = new \finfo(FILEINFO_MIME_TYPE);
-        $tipoImagen = $finfo->file($imagen['tmp_name']);
+        // Obtener el instructor desde la sesión
+        $idInstructor = $_SESSION['user_id'] ?? null;
 
-        $tiposImagenPermitidos = [
-            'image/jpeg' => 'jpg',
-            'image/png' => 'png',
-            'image/webp' => 'webp',
-            'image/gif' => 'gif'
-        ];
+        // Recibir los datos del formulario
+        $categoria = trim($_POST['categoria'] ?? '');
+        $titulo = trim($_POST['titulo'] ?? '');
+        $descripcion = trim($_POST['descripcion'] ?? '');
+        $costo = $_POST['costo'] ?? null;
 
-        if (!isset($tiposImagenPermitidos[$tipoImagen])) {
-            throw new \Exception(
-                'La imagen debe ser JPG, PNG, WEBP o GIF.'
-            );
+        // Validar instructor
+        if (
+            $idInstructor === null ||
+            !ctype_digit((string) $idInstructor) ||
+            (int) $idInstructor <= 0
+        ) {
+            $this->responder(401, [
+                'error' => 'Debes iniciar sesion para agregar un curso.'
+            ]);
         }
 
-        $nombreImagen = 'imagen_' .
-            bin2hex(random_bytes(12)) . '.' .
-            $tiposImagenPermitidos[$tipoImagen];
-
-        $rutaDestinoImagen = $carpetaImagenes . $nombreImagen;
-
-        if (!move_uploaded_file(
-            $imagen['tmp_name'],
-            $rutaDestinoImagen
-        )) {
-            throw new \Exception(
-                'No se pudo guardar la imagen del curso.'
-            );
+        // Validar que sea instructor
+        if (($_SESSION['rol'] ?? '') !== 'instructor') {
+            $this->responder(403, [
+                'error' => 'No tienes permisos para agregar cursos.'
+            ]);
         }
 
-        $imagenGuardada = $rutaDestinoImagen;
+        // Validar campos del curso
+        if ($titulo === '') {
+            $this->responder(400, [
+                'error' => 'El titulo es obligatorio.'
+            ]);
+        }
 
-        $rutaRelativaImagen = 'uploads/imagen-cursos/' . $nombreImagen;
+        if ($descripcion === '') {
+            $this->responder(400, [
+                'error' => 'La descripcion es obligatoria.'
+            ]);
+        }
 
+        if (
+            $costo === null ||
+            !is_numeric($costo) ||
+            !is_finite((float) $costo) ||
+            (float) $costo < 0
+        ) {
+            $this->responder(400, [
+                'error' => 'Debes proporcionar un costo valido.'
+            ]);
+        }
 
-        // Procesar cada nivel y su video
+        // Recibir los niveles
+        $niveles = json_decode($_POST['niveles'] ?? '', true);
 
-        foreach ($niveles as $indice => $nivel) {
+        if (
+            json_last_error() !== JSON_ERROR_NONE ||
+            !is_array($niveles) ||
+            count($niveles) < 1 ||
+            count($niveles) > 3
+        ) {
+            $this->responder(400, [
+                'error' => 'Debes proporcionar entre 1 y 3 niveles validos.'
+            ]);
+        }
 
-            $nombreNivel = trim($nivel['nombre'] ?? '');
+        // Recibir la imagen del curso
+        $imagen = $_FILES['imagen'] ?? null;
 
-            if ($nombreNivel === '') {
+        if (!$imagen || $imagen['error'] !== UPLOAD_ERR_OK) {
+            $this->responder(400, [
+                'error' => 'Debes seleccionar una imagen para el curso.'
+            ]);
+        }
+
+        // Recibir los videos
+        $videos = $_FILES['videos'] ?? null;
+
+        if (
+            !$videos ||
+            !isset($videos['name']) ||
+            count($videos['name']) !== count($niveles)
+        ) {
+            $this->responder(400, [
+                'error' => 'Debes proporcionar un video por cada nivel.'
+            ]);
+        }
+
+        // Carpetas de almacenamiento
+        $carpetaVideos = dirname(__DIR__) . '/public/uploads/videos/';
+        $carpetaImagenes = dirname(__DIR__) . '/public/uploads/imagen-cursos/';
+
+        // Crear carpeta de videos
+        if (
+            !is_dir($carpetaVideos) &&
+            !mkdir($carpetaVideos, 0775, true)
+        ) {
+            $this->responder(500, [
+                'error' => 'No se pudo crear la carpeta de videos.'
+            ]);
+        }
+
+        // Crear carpeta de imágenes
+        if (
+            !is_dir($carpetaImagenes) &&
+            !mkdir($carpetaImagenes, 0775, true)
+        ) {
+            $this->responder(500, [
+                'error' => 'No se pudo crear la carpeta de imagenes.'
+            ]);
+        }
+
+        $videosGuardados = [];
+        $imagenGuardada = null;
+        $nivelesCurso = [];
+
+        try {
+
+            // Procesar imagen del curso
+            if ($imagen['size'] > 5 * 1024 * 1024) {
                 throw new \Exception(
-                    'Todos los niveles deben tener un nombre.'
+                    'La imagen debe pesar menos de 5 MB.'
                 );
             }
 
-            $archivo = [
-                'name' => $videos['name'][$indice] ?? '',
-                'type' => $videos['type'][$indice] ?? '',
-                'tmp_name' => $videos['tmp_name'][$indice] ?? '',
-                'error' => $videos['error'][$indice] ?? UPLOAD_ERR_NO_FILE,
-                'size' => $videos['size'][$indice] ?? 0
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $tipoImagen = $finfo->file($imagen['tmp_name']);
+
+            $tiposImagenPermitidos = [
+                'image/jpeg' => 'jpg',
+                'image/png' => 'png',
+                'image/webp' => 'webp',
+                'image/gif' => 'gif'
             ];
 
-            if ($archivo['error'] !== UPLOAD_ERR_OK) {
+            if (!isset($tiposImagenPermitidos[$tipoImagen])) {
                 throw new \Exception(
-                    'Hubo un problema al recibir el video del nivel ' .
-                    ($indice + 1) . '.'
+                    'La imagen debe ser JPG, PNG, WEBP o GIF.'
                 );
             }
 
-            // Limitar el tamaño a 100 MB
-            if ($archivo['size'] > 100 * 1024 * 1024) {
-                throw new \Exception(
-                    'Cada video debe pesar menos de 100 MB.'
-                );
-            }
-
-            // Validar formato del video
-            $tipo = $finfo->file($archivo['tmp_name']);
-
-            $tiposPermitidos = [
-                'video/mp4' => 'mp4',
-                'video/webm' => 'webm',
-                'video/ogg' => 'ogg',
-                'video/quicktime' => 'mov',
-                'video/x-msvideo' => 'avi',
-                'video/x-matroska' => 'mkv'
-            ];
-
-            if (!isset($tiposPermitidos[$tipo])) {
-                throw new \Exception(
-                    'El archivo del nivel ' . ($indice + 1) .
-                    ' no tiene un formato de video permitido.'
-                );
-            }
-
-            // Crear nombre único para el video
-            $nombreArchivo = 'video_' .
+            $nombreImagen = 'imagen_' .
                 bin2hex(random_bytes(12)) . '.' .
-                $tiposPermitidos[$tipo];
+                $tiposImagenPermitidos[$tipoImagen];
 
-            $rutaDestino = $carpetaVideos . $nombreArchivo;
+            $rutaDestinoImagen = $carpetaImagenes . $nombreImagen;
 
             if (!move_uploaded_file(
-                $archivo['tmp_name'],
-                $rutaDestino
+                $imagen['tmp_name'],
+                $rutaDestinoImagen
             )) {
                 throw new \Exception(
-                    'No se pudo guardar uno de los videos.'
+                    'No se pudo guardar la imagen del curso.'
                 );
             }
 
-            $rutaRelativa = 'uploads/videos/' . $nombreArchivo;
+            $imagenGuardada = $rutaDestinoImagen;
 
-            $videosGuardados[] = $rutaDestino;
+            $rutaRelativaImagen = 'uploads/imagen-cursos/' . $nombreImagen;
 
-            $nivelesCurso[] = [
-                'numero_nivel' => $indice + 1,
-                'nombre' => $nombreNivel,
-                'video' => $rutaRelativa
-            ];
-        }
+            // Procesar cada nivel y su video
+            foreach ($niveles as $indice => $nivel) {
 
+                $nombreNivel = trim($nivel['nombre'] ?? '');
 
-        // Guardar curso y niveles en la base de datos
+                if ($nombreNivel === '') {
+                    throw new \Exception(
+                        'Todos los niveles deben tener un nombre.'
+                    );
+                }
 
-        $cursoModel = new Curso();
+                $archivo = [
+                    'name' => $videos['name'][$indice] ?? '',
+                    'type' => $videos['type'][$indice] ?? '',
+                    'tmp_name' => $videos['tmp_name'][$indice] ?? '',
+                    'error' => $videos['error'][$indice] ?? UPLOAD_ERR_NO_FILE,
+                    'size' => $videos['size'][$indice] ?? 0
+                ];
 
-        $datosCurso = [
-            'id_instructor' => (int) $idInstructor,
-            'categoria' => $categoria !== '' ? $categoria : null,
-            'titulo' => $titulo,
-            'descripcion' => $descripcion,
-            'costo' => $costo,
-            'imagen' => $rutaRelativaImagen
-        ];
+                if ($archivo['error'] !== UPLOAD_ERR_OK) {
+                    throw new \Exception(
+                        'Hubo un problema al recibir el video del nivel ' .
+                        ($indice + 1) . '.'
+                    );
+                }
 
-        $resultado = $cursoModel->agregarConNiveles(
-            $datosCurso,
-            $nivelesCurso
-        );
+                // Limitar el tamaño a 100 MB
+                if ($archivo['size'] > 100 * 1024 * 1024) {
+                    throw new \Exception(
+                        'Cada video debe pesar menos de 100 MB.'
+                    );
+                }
 
-        $this->responder(201, [
-            'mensaje' => 'Curso y niveles agregados correctamente.',
-            'curso' => $resultado
-        ]);
+                // Validar formato del video
+                $tipo = $finfo->file($archivo['tmp_name']);
 
-    } catch (\Throwable $e) {
+                $tiposPermitidos = [
+                    'video/mp4' => 'mp4',
+                    'video/webm' => 'webm',
+                    'video/ogg' => 'ogg',
+                    'video/quicktime' => 'mov',
+                    'video/x-msvideo' => 'avi',
+                    'video/x-matroska' => 'mkv'
+                ];
 
-        // Eliminar videos si ocurre un error
-        foreach ($videosGuardados as $ruta) {
-            if (file_exists($ruta)) {
-                unlink($ruta);
+                if (!isset($tiposPermitidos[$tipo])) {
+                    throw new \Exception(
+                        'El archivo del nivel ' . ($indice + 1) .
+                        ' no tiene un formato de video permitido.'
+                    );
+                }
+
+                // Crear nombre único para el video
+                $nombreArchivo = 'video_' .
+                    bin2hex(random_bytes(12)) . '.' .
+                    $tiposPermitidos[$tipo];
+
+                $rutaDestino = $carpetaVideos . $nombreArchivo;
+
+                if (!move_uploaded_file(
+                    $archivo['tmp_name'],
+                    $rutaDestino
+                )) {
+                    throw new \Exception(
+                        'No se pudo guardar uno de los videos.'
+                    );
+                }
+
+                $rutaRelativa = 'uploads/videos/' . $nombreArchivo;
+
+                $videosGuardados[] = $rutaDestino;
+
+                $nivelesCurso[] = [
+                    'numero_nivel' => $indice + 1,
+                    'nombre' => $nombreNivel,
+                    'video' => $rutaRelativa
+                ];
             }
+
+            // Guardar curso y niveles en la base de datos
+            $cursoModel = new Curso();
+
+            $datosCurso = [
+                'id_instructor' => (int) $idInstructor,
+                'categoria' => $categoria !== '' ? $categoria : null,
+                'titulo' => $titulo,
+                'descripcion' => $descripcion,
+                'costo' => $costo,
+                'imagen' => $rutaRelativaImagen
+            ];
+
+            $resultado = $cursoModel->agregarConNiveles(
+                $datosCurso,
+                $nivelesCurso
+            );
+
+            $this->responder(201, [
+                'mensaje' => 'Curso y niveles agregados correctamente.',
+                'curso' => $resultado
+            ]);
+
+        } catch (\Throwable $e) {
+
+            // Eliminar videos si ocurre un error
+            foreach ($videosGuardados as $ruta) {
+                if (file_exists($ruta)) {
+                    unlink($ruta);
+                }
+            }
+
+            // Eliminar imagen si ocurre un error
+            if (
+                $imagenGuardada !== null &&
+                file_exists($imagenGuardada)
+            ) {
+                unlink($imagenGuardada);
+            }
+
+            error_log($e->getMessage());
+
+            $this->responder(500, [
+                'error' => 'Ocurrio un error al agregar el curso.',
+                'detalle' => $e->getMessage()
+            ]);
         }
-
-        // Eliminar imagen si ocurre un error
-        if (
-            $imagenGuardada !== null &&
-            file_exists($imagenGuardada)
-        ) {
-            unlink($imagenGuardada);
-        }
-
-        error_log($e->getMessage());
-
-        $this->responder(500, [
-            'error' => 'Ocurrio un error al agregar el curso.',
-            'detalle' => $e->getMessage()
-        ]);
     }
-}
 
     // 2. Obtener los cursos recientes
     public function recientes()
@@ -317,7 +313,24 @@ public function agregar()
 
         try {
             $cursoModel = new Curso();
+            $calificacionModel = new Calificacion();
+
             $cursos = $cursoModel->obtenerRecientes();
+
+            // Agregar promedio y total de calificaciones
+            foreach ($cursos as &$curso) {
+                $calificacion = $calificacionModel->obtenerPromedio(
+                    (int) $curso['id_curso']
+                );
+
+                $curso['promedio_calificacion'] =
+                    (float) ($calificacion['promedio'] ?? 0);
+
+                $curso['total_calificaciones'] =
+                    (int) ($calificacion['total_calificaciones'] ?? 0);
+            }
+
+            unset($curso);
 
             $this->responder(200, [
                 'cursos' => $cursos
@@ -364,10 +377,26 @@ public function agregar()
 
         try {
             $cursoModel = new Curso();
+            $calificacionModel = new Calificacion();
 
             $cursos = $cursoModel->obtenerPorInstructor(
                 (int) $idInstructor
             );
+
+            // Agregar promedio y total de calificaciones
+            foreach ($cursos as &$curso) {
+                $calificacion = $calificacionModel->obtenerPromedio(
+                    (int) $curso['id_curso']
+                );
+
+                $curso['promedio_calificacion'] =
+                    (float) ($calificacion['promedio'] ?? 0);
+
+                $curso['total_calificaciones'] =
+                    (int) ($calificacion['total_calificaciones'] ?? 0);
+            }
+
+            unset($curso);
 
             $this->responder(200, [
                 'cursos' => $cursos
@@ -406,6 +435,8 @@ public function agregar()
 
         try {
             $cursoModel = new Curso();
+            $calificacionModel = new Calificacion();
+
             $detalle = $cursoModel->obtenerDetalle((int) $idCurso);
 
             if (
@@ -417,6 +448,17 @@ public function agregar()
                     'error' => 'El curso no existe.'
                 ]);
             }
+
+            // Obtener promedio y total de calificaciones
+            $calificacion = $calificacionModel->obtenerPromedio(
+                (int) $idCurso
+            );
+
+            $detalle['curso']['promedio_calificacion'] =
+                (float) ($calificacion['promedio'] ?? 0);
+
+            $detalle['curso']['total_calificaciones'] =
+                (int) ($calificacion['total_calificaciones'] ?? 0);
 
             $this->responder(200, $detalle);
 
@@ -444,4 +486,34 @@ public function agregar()
 
         exit;
     }
+
+
+public function mejorValorados()
+{
+    if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+        $this->responder(405, [
+            'error' => 'Método no permitido.'
+        ]);
+    }
+
+    try {
+
+        $modelo = new Curso();
+
+        $cursos = $modelo->obtenerMejorValorados();
+
+        $this->responder(200, [
+            'cursos' => $cursos
+        ]);
+
+    } catch (\Throwable $e) {
+
+        $this->responder(500, [
+            'error' => 'Error al obtener los cursos mejor valorados.',
+            'detalle' => $e->getMessage()
+        ]);
+
+    }
+}
+
 }

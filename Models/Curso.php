@@ -286,4 +286,32 @@ class Curso
             'niveles' => $niveles
         ];
     }
+
+
+    public function obtenerMejorValorados()
+    {
+        $this->conn->query(
+            "CALL sp_cursos(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            [
+                7,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        );
+
+        $cursos = $this->conn->get();
+
+        while ($this->conn->statement->nextRowset()) {}
+
+        return $cursos;
+    }
 }
