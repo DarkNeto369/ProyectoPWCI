@@ -26,7 +26,7 @@ $router->get('/api/cursos/detalle', 'controllers/api/cursos/detalle.php');
 // PayPal
 $router->post('/api/paypal/prueba', 'test/prueba_paypal.php');
 
-$router->get('/paypal/retorno', 'test/prueba_paypal_retorno.php');
+$router->get('/paypal/retorno', 'controllers/paypal/retorno.php');
 
 
 
