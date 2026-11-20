@@ -1,0 +1,118 @@
+body {
+    background: linear-gradient(
+        rgb(121, 255, 184),
+        rgb(185, 255, 215)
+    );
+    min-height: 100vh;
+}
+
+.cursos-container {
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.encabezado-cursos {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    border-left: 6px solid rgb(242, 121, 97);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+.etiqueta-cursos {
+    color: rgb(29, 179, 102);
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.encabezado-cursos h1 {
+    color: rgb(242, 121, 97);
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.encabezado-cursos p {
+    color: #555;
+    margin-bottom: 0;
+}
+
+.seccion-cursos {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.seccion-cursos h2 {
+    color: rgb(29, 179, 102);
+    font-weight: bold;
+}
+
+.subtitle {
+    color: #555;
+}
+
+.filtro-categoria {
+    min-width: 220px;
+}
+
+.filtro-categoria label {
+    color: rgb(29, 179, 102);
+    font-weight: 600;
+}
+
+.filtro-categoria select {
+    border-radius: 10px;
+    border: 1px solid rgb(29, 179, 102);
+}
+
+.filtro-categoria select:focus {
+    border-color: rgb(39, 212, 123);
+    box-shadow: 0 0 0 0.2rem rgba(29, 179, 102, 0.2);
+}
+
+.tabla-ventas thead th {
+    background-color: rgb(29, 179, 102);
+    color: white;
+    padding: 15px;
+}
+
+.tabla-ventas tbody td {
+    padding: 15px;
+}
+
+.tabla-ventas tbody tr:hover {
+    background-color: rgb(235, 255, 244);
+}
+
+.total-ventas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(235, 255, 244);
+    border-left: 6px solid rgb(242, 121, 97);
+    border-radius: 10px;
+    padding: 20px;
+    color: #444;
+    font-size: 1.1rem;
+}
+
+.total-ventas strong {
+    color: rgb(242, 121, 97);
+    font-size: 1.4rem;
+}
+
+@media (max-width: 576px) {
+    .seccion-cursos,
+    .encabezado-cursos {
+        padding: 20px;
+    }
+
+    .total-ventas {
+        gap: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

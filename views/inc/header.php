@@ -91,23 +91,29 @@ $rol = $usuario['rol'] ?? '';
 
                 <?php elseif ($rol === 'instructor'): ?>
 
-                    <li>
-                        <a class="dropdown-item" href="/ProyectoPWCI/public/crear-curso">
-                            Crear curso
-                        </a>
-                    </li>
+                <li>
+                    <a class="dropdown-item" href="/ProyectoPWCI/public/crear-curso">
+                        Crear curso
+                    </a>
+                </li>
 
-                    <li>
-                        <a class="dropdown-item" href="/ProyectoPWCI/public/mis-cursos-instructor">
-                            Mis cursos
-                        </a>
-                    </li>
+                <li>
+                    <a class="dropdown-item" href="/ProyectoPWCI/public/mis-cursos-instructor">
+                        Mis cursos
+                    </a>
+                </li>
 
-                    <li>
-                        <a class="dropdown-item" href="/ProyectoPWCI/public/mensajes">
-                            Mensajes
-                        </a>
-                    </li>
+                <li>
+                    <a class="dropdown-item" href="/ProyectoPWCI/public/reporte-ventas">
+                        Ventas
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item" href="/ProyectoPWCI/public/mensajes">
+                        Mensajes
+                    </a>
+                </li>
 
                 <?php elseif ($rol === 'administrador'): ?>
 

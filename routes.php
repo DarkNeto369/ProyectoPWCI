@@ -126,3 +126,22 @@ $router->get('/api/calificaciones', 'controllers/api/calificaciones/promedio.php
 
 
 $router->get('/api/cursos/mejor-valorados', 'controllers/api/cursos/mejor-valorados.php');
+
+
+
+
+
+
+
+
+// Reporte de ventas (Solo instructores)
+$router->get('/reporte-ventas', 'views/reporte-ventas.php')
+    ->only('instructor');
+
+// Datos del reporte de ventas
+$router->get('/reporte-ventas/datos', 'controllers/ventas/obtener.php')
+    ->only('instructor');
+
+// Categorías del reporte de ventas
+$router->get('/reporte-ventas/categorias', 'controllers/ventas/categorias.php')
+    ->only('instructor');
