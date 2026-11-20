@@ -145,3 +145,9 @@ $router->get('/reporte-ventas/datos', 'controllers/ventas/obtener.php')
 // Categorías del reporte de ventas
 $router->get('/reporte-ventas/categorias', 'controllers/ventas/categorias.php')
     ->only('instructor');
+
+
+
+// Reporte de usuarios (Solo administradores)
+$router->get('/reporte-usuarios', 'controllers/reporte-admin/obtener.php')
+    ->only('administrador');

@@ -15,7 +15,7 @@ if (isset($_SESSION['user_id'])) {
 $imagenPerfil = '../public/' . ($usuario['imagen_perfil'] ?? '');
 
 if (empty($usuario['imagen_perfil'])) {
-    $imagenPerfil = 'https://i.pravatar.cc/100';
+    $imagenPerfil = '../assets/img/user_default.png';
 }
 
 // Rol del usuario
@@ -117,13 +117,13 @@ $rol = $usuario['rol'] ?? '';
 
                 <?php elseif ($rol === 'administrador'): ?>
 
-                    <li>
-                        <a class="dropdown-item" href="administracion.php">
-                            Administración
-                        </a>
-                    </li>
+                <li>
+                    <a class="dropdown-item" href="/ProyectoPWCI/public/reporte-usuarios">
+                        Reporte de usuarios
+                    </a>
+                </li>
 
-                <?php endif; ?>
+            <?php endif; ?>
 
                 <li>
                     <hr class="dropdown-divider">

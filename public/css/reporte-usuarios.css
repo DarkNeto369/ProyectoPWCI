@@ -1,0 +1,93 @@
+body {
+    background: linear-gradient(
+        rgb(121, 255, 184),
+        rgb(185, 255, 215)
+    );
+    min-height: 100vh;
+}
+
+.reporte-container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.encabezado-reporte {
+    background: rgb(29, 179, 102);
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.encabezado-reporte h1 {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.encabezado-reporte p {
+    margin-bottom: 0;
+}
+
+.seccion-reporte {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.filtro-reporte {
+    max-width: 350px;
+    margin-bottom: 25px;
+}
+
+.filtro-reporte label {
+    font-weight: bold;
+    color: rgb(29, 179, 102);
+}
+
+.form-select:focus {
+    border-color: rgb(29, 179, 102);
+    box-shadow: 0 0 0 0.2rem rgba(29, 179, 102, 0.2);
+}
+
+.tabla-reporte {
+    vertical-align: middle;
+    margin-bottom: 0;
+}
+
+.tabla-reporte thead {
+    background: rgb(29, 179, 102);
+    color: white;
+}
+
+.tabla-reporte th {
+    padding: 15px;
+    white-space: nowrap;
+}
+
+.tabla-reporte td {
+    padding: 14px;
+}
+
+.tabla-reporte tbody tr:hover {
+    background: rgb(232, 255, 242);
+}
+
+.tabla-reporte tbody td {
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .reporte-container {
+        padding-top: 20px;
+    }
+
+    .seccion-reporte {
+        padding: 15px;
+    }
+
+    .encabezado-reporte h1 {
+        font-size: 24px;
+    }
+}
