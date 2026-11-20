@@ -115,4 +115,40 @@ class Usuario
 
         return $usuario;
     }
+
+    // Actualizar datos del perfil
+    public function actualizarPerfil($datos)
+    {
+        $sql = "CALL sp_usuarios(
+            :opcion,
+            :id_usuario,
+            :imagen_perfil,
+            :nombre,
+            :apellido,
+            :genero,
+            :fecha_nacimiento,
+            :rol,
+            :correo,
+            :contra
+        )";
+
+        $this->conn->query($sql, [
+            'opcion' => 3,
+            'id_usuario' => $datos['id_usuario'],
+            'imagen_perfil' => $datos['imagen_perfil'] ?? null,
+            'nombre' => $datos['nombre'],
+            'apellido' => $datos['apellido'],
+            'genero' => $datos['genero'],
+            'fecha_nacimiento' => $datos['fecha_nacimiento'],
+            'rol' => null,
+            'correo' => $datos['correo'],
+            'contra' => $datos['contra'] ?? null
+        ]);
+
+        while ($this->conn->statement->nextRowset()) {
+            // Consumir resultados pendientes
+        }
+
+        return true;
+    }
 }

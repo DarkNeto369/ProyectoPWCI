@@ -1,0 +1,94 @@
+body {
+    background: linear-gradient(
+        rgb(121, 255, 184),
+        rgb(185, 255, 215)
+    );
+    min-height: 100vh;
+}
+
+.perfil-container {
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+
+.perfil-card {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.perfil-encabezado {
+    background: rgb(29, 179, 102);
+    color: white;
+    text-align: center;
+    padding: 28px 20px;
+}
+
+.perfil-encabezado h2 {
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.perfil-encabezado p {
+    margin-bottom: 0;
+    opacity: 0.9;
+}
+
+.perfil-imagen img {
+    object-fit: cover;
+    border: 5px solid rgb(185, 255, 215);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.perfil-imagen .btn {
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-weight: 600;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.form-control,
+.form-select {
+    border-radius: 9px;
+    padding: 10px 12px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: rgb(29, 179, 102);
+    box-shadow: 0 0 0 0.2rem rgba(29, 179, 102, 0.18);
+}
+
+.btn-guardar {
+    background: rgb(29, 179, 102);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 700;
+    transition: background 0.2s ease;
+}
+
+.btn-guardar:hover {
+    background: rgb(39, 212, 123);
+    color: white;
+}
+
+#message {
+    border-radius: 10px;
+}
+
+@media (max-width: 576px) {
+    .perfil-container {
+        padding: 25px 15px;
+    }
+
+    .perfil-card .card-body {
+        padding: 25px 20px !important;
+    }
+}

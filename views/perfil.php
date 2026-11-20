@@ -1,3 +1,23 @@
+<?php
+
+// Datos del usuario
+$usuario = $usuario ?? [];
+
+// Imagen de perfil
+$imagenPerfil = !empty($usuario['imagen_perfil'])
+    ? '/ProyectoPWCI/public/' . ltrim($usuario['imagen_perfil'], '/')
+    : 'https://via.placeholder.com/150';
+
+// Mensajes de sesión
+$mensaje = $_SESSION['mensaje_perfil'] ?? null;
+$tipoMensaje = $_SESSION['tipo_mensaje'] ?? 'info';
+
+// Limpiar el mensaje después de recuperarlo
+unset($_SESSION['mensaje_perfil']);
+unset($_SESSION['tipo_mensaje']);
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,66 +27,89 @@
 
     <title>Mi perfil</title>
 
-    <!-- Bootstrap -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/header.css">
+    <link rel="stylesheet" href="../public/css/perfil.css">
 </head>
 
-<body class="bg-light">
+<body>
 
-    <div class="container py-5">
+    <!-- Header -->
+    <?php require __DIR__ . '/inc/header.php'; ?>
+
+    <main class="container perfil-container">
 
         <div class="row justify-content-center">
 
-            <div class="col-md-8 col-lg-6">
+            <div class="col-md-9 col-lg-7">
 
-                <div class="card shadow-sm">
+                <div class="card perfil-card">
 
-                    <div class="card-body p-4">
+                    <!-- Encabezado -->
+                    <div class="perfil-encabezado">
+                        <h2>Mi perfil</h2>
+                        <p>Consulta y actualiza tu información personal</p>
+                    </div>
 
-                        <h2 class="text-center mb-4">
-                            Mi perfil
-                        </h2>
+                    <div class="card-body p-4 p-md-5">
 
-                        <!-- Imagen de perfil -->
-                        <div class="text-center mb-4">
+                        <!-- Mensajes del controlador -->
+                        <?php if ($mensaje): ?>
 
-                            <img
-                                id="profilePreview"
-                                src="https://via.placeholder.com/150"
-                                alt="Imagen de perfil"
-                                class="rounded-circle mb-3"
-                                width="150"
-                                height="150"
-                                style="object-fit: cover;"
-                            >
+                            <div class="alert alert-<?= htmlspecialchars($tipoMensaje, ENT_QUOTES, 'UTF-8') ?>"
+                                 role="alert">
 
-                            <div>
-                                <label
-                                    for="profileImage"
-                                    class="btn btn-outline-primary"
-                                >
-                                    Cambiar imagen
-                                </label>
+                                <?= htmlspecialchars($mensaje, ENT_QUOTES, 'UTF-8') ?>
 
-                                <input
-                                    type="file"
-                                    id="profileImage"
-                                    class="d-none"
-                                    accept="image/*"
-                                >
                             </div>
 
-                        </div>
+                        <?php endif; ?>
 
-                        <!-- Formulario -->
-                        <form id="profileForm">
+                        <!-- Formulario de actualización -->
+                        <form
+                            id="profileForm"
+                            method="POST"
+                            action="/ProyectoPWCI/public/perfil"
+                            enctype="multipart/form-data"
+                        >
+
+                            <!-- Imagen de perfil -->
+                            <div class="perfil-imagen text-center mb-4">
+
+                                <img
+                                    id="profilePreview"
+                                    src="<?= htmlspecialchars($imagenPerfil, ENT_QUOTES, 'UTF-8') ?>"
+                                    alt="Imagen de perfil"
+                                    class="rounded-circle"
+                                    width="150"
+                                    height="150"
+                                >
+
+                                <div class="mt-3">
+
+                                    <label
+                                        for="profileImage"
+                                        class="btn btn-outline-success"
+                                    >
+                                        Cambiar imagen
+                                    </label>
+
+                                    <input
+                                        type="file"
+                                        id="profileImage"
+                                        name="imagen_perfil"
+                                        class="d-none"
+                                        accept="image/jpeg, image/png, image/webp"
+                                    >
+
+                                </div>
+
+                            </div>
 
                             <!-- Nombre -->
                             <div class="mb-3">
-                                <label
-                                    for="nombre"
-                                    class="form-label"
-                                >
+
+                                <label for="nombre" class="form-label">
                                     Nombre
                                 </label>
 
@@ -75,17 +118,16 @@
                                     class="form-control"
                                     id="nombre"
                                     name="nombre"
-                                    placeholder="Nombre"
+                                    value="<?= htmlspecialchars($usuario['nombre'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
                                     required
                                 >
+
                             </div>
 
                             <!-- Apellido -->
                             <div class="mb-3">
-                                <label
-                                    for="apellido"
-                                    class="form-label"
-                                >
+
+                                <label for="apellido" class="form-label">
                                     Apellido
                                 </label>
 
@@ -94,17 +136,16 @@
                                     class="form-control"
                                     id="apellido"
                                     name="apellido"
-                                    placeholder="Apellido"
+                                    value="<?= htmlspecialchars($usuario['apellido'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
                                     required
                                 >
+
                             </div>
 
                             <!-- Género -->
                             <div class="mb-3">
-                                <label
-                                    for="genero"
-                                    class="form-label"
-                                >
+
+                                <label for="genero" class="form-label">
                                     Género
                                 </label>
 
@@ -114,30 +155,44 @@
                                     name="genero"
                                     required
                                 >
-                                    <option value="" selected disabled>
+
+                                    <option
+                                        value=""
+                                        disabled
+                                        <?= empty($usuario['genero']) ? 'selected' : '' ?>
+                                    >
                                         Selecciona una opción
                                     </option>
 
-                                    <option value="hombre">
+                                    <option
+                                        value="Hombre"
+                                        <?= ($usuario['genero'] ?? '') === 'Hombre' ? 'selected' : '' ?>
+                                    >
                                         Hombre
                                     </option>
 
-                                    <option value="mujer">
+                                    <option
+                                        value="Mujer"
+                                        <?= ($usuario['genero'] ?? '') === 'Mujer' ? 'selected' : '' ?>
+                                    >
                                         Mujer
                                     </option>
 
-                                    <option value="otro">
+                                    <option
+                                        value="Otro"
+                                        <?= ($usuario['genero'] ?? '') === 'Otro' ? 'selected' : '' ?>
+                                    >
                                         Otro
                                     </option>
+
                                 </select>
+
                             </div>
 
                             <!-- Fecha de nacimiento -->
                             <div class="mb-3">
-                                <label
-                                    for="fechaNacimiento"
-                                    class="form-label"
-                                >
+
+                                <label for="fechaNacimiento" class="form-label">
                                     Fecha de nacimiento
                                 </label>
 
@@ -145,17 +200,17 @@
                                     type="date"
                                     class="form-control"
                                     id="fechaNacimiento"
-                                    name="fechaNacimiento"
+                                    name="fecha_nacimiento"
+                                    value="<?= htmlspecialchars($usuario['fecha_nacimiento'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
                                     required
                                 >
+
                             </div>
 
                             <!-- Correo -->
                             <div class="mb-3">
-                                <label
-                                    for="correo"
-                                    class="form-label"
-                                >
+
+                                <label for="correo" class="form-label">
                                     Correo electrónico
                                 </label>
 
@@ -164,39 +219,39 @@
                                     class="form-control"
                                     id="correo"
                                     name="correo"
-                                    placeholder="correo@ejemplo.com"
+                                    value="<?= htmlspecialchars($usuario['correo'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
                                     required
                                 >
+
                             </div>
 
                             <!-- Contraseña -->
                             <div class="mb-3">
-                                <label
-                                    for="password"
-                                    class="form-label"
-                                >
-                                    Contraseña
+
+                                <label for="password" class="form-label">
+                                    Nueva contraseña
                                 </label>
 
                                 <input
                                     type="password"
                                     class="form-control"
                                     id="password"
-                                    name="password"
-                                    placeholder="Nueva contraseña"
+                                    name="contra"
+                                    placeholder="Escribe una nueva contraseña"
                                 >
 
                                 <div class="form-text">
                                     Deja este campo vacío si no deseas cambiar tu contraseña.
                                 </div>
+
                             </div>
 
-                            <!-- Botón guardar -->
+                            <!-- Botón -->
                             <div class="d-grid mt-4">
 
                                 <button
                                     type="submit"
-                                    class="btn btn-primary"
+                                    class="btn btn-guardar"
                                 >
                                     Guardar cambios
                                 </button>
@@ -204,13 +259,6 @@
                             </div>
 
                         </form>
-
-                        <!-- Mensaje -->
-                        <div
-                            id="message"
-                            class="alert mt-4 d-none"
-                            role="alert"
-                        ></div>
 
                     </div>
 
@@ -220,10 +268,28 @@
 
         </div>
 
-    </div>
+    </main>
 
-    <script src="../public/js/perfil.js"></script>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Vista previa de la imagen -->
+    <script>
+        document.getElementById('profileImage').addEventListener('change', function(event) {
+
+            const archivo = event.target.files[0];
+
+            if (archivo) {
+                const lector = new FileReader();
+
+                lector.onload = function(e) {
+                    document.getElementById('profilePreview').src = e.target.result;
+                };
+
+                lector.readAsDataURL(archivo);
+            }
+
+        });
+    </script>
 
 </body>
-
 </html>

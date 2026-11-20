@@ -151,3 +151,13 @@ $router->get('/reporte-ventas/categorias', 'controllers/ventas/categorias.php')
 // Reporte de usuarios (Solo administradores)
 $router->get('/reporte-usuarios', 'controllers/reporte-admin/obtener.php')
     ->only('administrador');
+
+
+
+    $router->get('/perfil', 'views/perfil.php')->only('auth');
+
+
+
+    $router->get('/perfil', 'controllers/perfil/obtener.php')->only('auth');
+
+$router->post('/perfil', 'controllers/perfil/obtener.php')->only('auth');

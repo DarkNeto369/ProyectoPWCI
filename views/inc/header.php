@@ -70,7 +70,7 @@ $rol = $usuario['rol'] ?? '';
             >
 
                 <li>
-                    <a class="dropdown-item" href="perfil.php">
+                    <a class="dropdown-item" href="/ProyectoPWCI/public/perfil">
                         Mi perfil
                     </a>
                 </li>
