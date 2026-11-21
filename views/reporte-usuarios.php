@@ -24,8 +24,7 @@ $usuarios = $usuarios ?? [];
     <main class="container reporte-container">
 
         <div class="encabezado-reporte">
-            <h1>Reporte de usuarios</h1>
-            <p>Consulta la información de instructores y estudiantes activos.</p>
+            <h3>Reporte de usuarios</h3>
         </div>
 
         <section class="seccion-reporte">

@@ -47,8 +47,8 @@ unset($_SESSION['tipo_mensaje']);
 
                     <!-- Encabezado -->
                     <div class="perfil-encabezado">
-                        <h2>Mi perfil</h2>
-                        <p>Consulta y actualiza tu información personal</p>
+                        <h3>Mi perfil</h3>
+                        <!--<p>Consulta y actualiza tu información personal</p>-->
                     </div>
 
                     <div class="card-body p-4 p-md-5">
@@ -240,9 +240,9 @@ unset($_SESSION['tipo_mensaje']);
                                     placeholder="Escribe una nueva contraseña"
                                 >
 
-                                <div class="form-text">
+                                <!--<div class="form-text">
                                     Deja este campo vacío si no deseas cambiar tu contraseña.
-                                </div>
+                                </div>-->
 
                             </div>
 

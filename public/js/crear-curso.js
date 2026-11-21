@@ -94,7 +94,6 @@ agregarNivelBtn.addEventListener("click", function () {
             <input
                 type="text"
                 class="form-control nombreNivel"
-                placeholder="Ej. Introducción a HTML"
             >
 
         </div>

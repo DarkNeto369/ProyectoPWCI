@@ -79,13 +79,11 @@ body {
     color: white;
 }
 
-
-/* ENCABEZADO DE MIS CURSOS */
 .encabezado-cursos {
     background: white;
-    padding: 30px;
+    padding: 20px;
     border-radius: 15px;
-    border-left: 6px solid rgb(242, 121, 97);
+    /*border-left: 6px solid rgb(242, 121, 97);*/
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     margin-bottom: 30px;
 }
@@ -97,7 +95,7 @@ body {
     letter-spacing: 2px;
 }
 
-.encabezado-cursos h1 {
+.encabezado-cursos h2 {
     color: rgb(242, 121, 97);
     font-weight: bold;
     margin-top: 8px;
@@ -108,7 +106,6 @@ body {
     margin-bottom: 0;
 }
 
-/* PANEL DE INSCRIPCIONES */
 .seccion-cursos {
     background: white;
     border-radius: 15px;

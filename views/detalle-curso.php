@@ -18,9 +18,9 @@
 
     <main class="container py-5">
 
-        <a href="/ProyectoPWCI/public/main" class="btn btn-volver mb-4">
+        <!--<a href="/ProyectoPWCI/public/main" class="btn btn-volver mb-4">
             ← Volver a los cursos
-        </a>
+        </a>-->
 
         <div id="mensajeCurso" class="alert alert-info">
             Cargando información del curso...
@@ -111,9 +111,9 @@
 
                     <h2>Contenido del curso</h2>
 
-                    <p>
+                    <!--<p>
                         Conoce los niveles que componen este curso.
-                    </p>
+                    </p>-->
                 </div>
 
                 <div id="levelsContainer"></div>

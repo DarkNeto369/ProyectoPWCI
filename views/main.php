@@ -20,11 +20,7 @@
 
     <div class="container mt-5">
 
-        <!-- ================================= -->
-        <!-- CARRUSEL DE CURSOS RECIENTES -->
-        <!-- ================================= -->
-
-        <h2 class="mb-4">Cursos Recientes</h2>
+        <h3 class="mb-4">Cursos Recientes</h3>
 
         <div id="mensajeCursos" class="alert alert-info" role="status">
             Cargando cursos...
@@ -61,12 +57,7 @@
 
         </div>
 
-
-        <!-- ================================= -->
-        <!-- CARRUSEL DE CURSOS MEJOR VALORADOS -->
-        <!-- ================================= -->
-
-        <h2 class="mb-4 mt-5">⭐ Cursos mejor valorados</h2>
+        <h3 class="mb-4 mt-5">Cursos mejor valorados</h3>
 
         <div id="mensajeMejorValorados" class="alert alert-info" role="status">
             Cargando cursos mejor valorados...

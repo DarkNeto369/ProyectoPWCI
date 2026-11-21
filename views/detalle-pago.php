@@ -20,21 +20,22 @@
 
     <main class="container py-5">
 
-        <a href="javascript:history.back()" class="btn btn-volver mb-4">
+        <!--<a href="javascript:history.back()" class="btn btn-volver mb-4">
             ← Regresar
-        </a>
+        </a>-->
 
         <div class="payment-container">
 
             <div class="payment-heading text-center mb-4">
                 <span class="etiqueta-pago">FINALIZAR COMPRA</span>
 
-                <h1>Detalle de pago</h1>
+                <h2>Detalle de pago</h2>
 
                 <p>
                     ¡Ya casi es tuyo! Revisa los datos de tu curso antes de continuar.
                 </p>
             </div>
+            <br>
 
             <div class="payment-card">
 
@@ -97,14 +98,14 @@
 
                             </div>
 
-                            <div class="payment-security">
+                            <!--<div class="payment-security">
                                 <span>🔒</span>
 
                                 <p>
                                     Tu pago será procesado de forma segura
                                     mediante PayPal Sandbox.
                                 </p>
-                            </div>
+                            </div>-->
 
                             <button
                                 id="confirmButton"

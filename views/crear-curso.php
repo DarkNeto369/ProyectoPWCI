@@ -28,9 +28,9 @@
 
                 <div class="text-center mb-5">
                     <h2 class="main-title">Crear nuevo curso</h2>
-                    <p class="subtitle">
+                    <!--<p class="subtitle">
                         Comparte tus conocimientos y crea una experiencia de aprendizaje.
-                    </p>
+                    </p>-->
                 </div>
 
                 <!-- Información del curso -->
@@ -66,7 +66,6 @@
                         type="text"
                         id="titulo"
                         class="form-control"
-                        placeholder="Ej. Curso completo de HTML y CSS"
                     >
                 </div>
 
@@ -80,7 +79,6 @@
                         id="descripcion"
                         class="form-control"
                         rows="5"
-                        placeholder="Describe de qué trata tu curso..."
                     ></textarea>
                 </div>
 

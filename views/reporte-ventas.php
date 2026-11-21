@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../public/css/header.css">
-    <link rel="stylesheet" href="../public/css/mis-cursos.css">
+    <link rel="stylesheet" href="../public/css/reporte-ventas.css">
 </head>
 
 <body>
@@ -20,11 +20,11 @@
 
         <div class="encabezado-cursos">
 
-            <span class="etiqueta-cursos">
+            <!--<span class="etiqueta-cursos">
                 PANEL DE INSTRUCTOR
-            </span>
+            </span>-->
 
-            <h1>Reporte de ventas</h1>
+            <h3 class="titulo">Reporte de ventas</h3>
 
             <p>
                 Consulta los alumnos inscritos y los ingresos generados por tus cursos.

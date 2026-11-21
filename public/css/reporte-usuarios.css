@@ -12,8 +12,8 @@ body {
 }
 
 .encabezado-reporte {
-    background: rgb(29, 179, 102);
-    color: white;
+    background: white;
+    color: rgb(242, 121, 97);
     padding: 25px;
     border-radius: 15px;
     margin-bottom: 25px;

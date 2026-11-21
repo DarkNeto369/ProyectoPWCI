@@ -6,12 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Detalle del curso - Instructor</title>
+    <title>Detalle del curso - PWCI Academy</title>
 
-    <!-- Bootstrap -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-
-    <!-- Estilos -->
     <link rel="stylesheet" href="../public/css/header.css">
     <link rel="stylesheet" href="../public/css/detalle-curso-instructor.css">
 
@@ -24,14 +21,8 @@
 
     <main class="container detalle-container">
 
-        <!-- Regresar -->
-        <a href="/ProyectoPWCI/public/mis-cursos-instructor"
-           class="btn btn-regresar mb-4">
-            ← Mis cursos
-        </a>
-
-        <!-- Mensaje de carga -->
-        <div id="mensajeCurso" class="alert alert-info">
+        <!-- MENSAJE DE CARGA -->
+        <div id="mensajeCurso" class="alert">
             Cargando información del curso...
         </div>
 
@@ -40,7 +31,7 @@
 
             <div class="row g-4">
 
-                <!-- Imagen -->
+                <!-- IMAGEN -->
                 <div class="col-12 col-lg-5">
 
                     <img
@@ -52,7 +43,7 @@
 
                 </div>
 
-                <!-- Información -->
+                <!-- INFORMACIÓN -->
                 <div class="col-12 col-lg-7">
 
                     <span id="courseCategory" class="categoria-curso">
@@ -70,25 +61,6 @@
                     <h3 id="coursePrice" class="precio-curso">
                         $0.00 MXN
                     </h3>
-
-                    <!-- Acciones del instructor -->
-                    <div class="acciones-curso mt-4">
-
-                        <button
-                            type="button"
-                            id="modifyButton"
-                            class="btn btn-modificar">
-                            Modificar curso
-                        </button>
-
-                        <button
-                            type="button"
-                            id="deleteButton"
-                            class="btn btn-eliminar">
-                            Eliminar curso
-                        </button>
-
-                    </div>
 
                 </div>
 
@@ -115,10 +87,10 @@
 
     </main>
 
-    <!-- Bootstrap JS -->
+    <!-- BOOTSTRAP JS -->
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- JavaScript del detalle del instructor -->
+    <!-- JAVASCRIPT DEL DETALLE DEL INSTRUCTOR -->
     <script src="../public/js/detalle-curso-instructor.js"></script>
 
 </body>

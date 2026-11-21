@@ -14,21 +14,18 @@
 </head>
 
 <body>
-
-    <!-- HEADER COMPARTIDO -->
     <?php include 'inc/header.php'; ?>
 
     <main class="container aula-container">
 
-        <!-- INFORMACIÓN DEL CURSO -->
         <section class="encabezado-aula mb-4">
             <span class="etiqueta-aula">MI APRENDIZAJE</span>
 
-            <h1 id="tituloCurso">Cargando curso...</h1>
+            <<h1 id="tituloCurso">Cargando curso...</h1>
 
-            <p id="descripcionCurso">
+            <!--<p id="descripcionCurso">
                 Selecciona un nivel para comenzar a aprender.
-            </p>
+            </p>-->
 
             <!-- PROGRESO GENERAL -->
             <div class="mt-4">

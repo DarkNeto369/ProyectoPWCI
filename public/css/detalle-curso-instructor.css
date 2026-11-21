@@ -1,0 +1,167 @@
+body {
+    background: linear-gradient(
+        135deg,
+        rgb(121, 255, 184),
+        rgb(185, 255, 215)
+    );
+    min-height: 100vh;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.detalle-container {
+    max-width: 1150px;
+    padding-top: 45px;
+    padding-bottom: 60px;
+}
+
+.detalle-panel {
+    background: white;
+    padding: 40px;
+    border-radius: 22px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* MENSAJE DE CARGA */
+#mensajeCurso {
+    background: white;
+    color: rgb(29, 145, 91);
+    border: none;
+    border-left: 5px solid rgb(29, 179, 102);
+    border-radius: 12px;
+    padding: 18px 22px;
+    font-weight: 600;
+}
+
+/* IMAGEN DEL CURSO */
+.imagen-curso {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 18px;
+    background: #f1f1f1;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+/* CATEGORÍA */
+.categoria-curso {
+    display: inline-block;
+    background: rgb(220, 255, 235);
+    color: rgb(29, 145, 91);
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+
+/* TÍTULO */
+.titulo-curso {
+    color: rgb(242, 121, 97);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+/* DESCRIPCIÓN */
+.descripcion-curso {
+    color: #666;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+/* PRECIO */
+.precio-curso {
+    color: rgb(29, 179, 102);
+    font-size: 2rem;
+    font-weight: 800;
+    margin-top: 25px;
+}
+
+/* SECCIÓN DE NIVELES */
+.niveles-section {
+    padding-top: 5px;
+}
+
+.titulo-niveles {
+    color: rgb(242, 121, 97);
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-top: 12px;
+}
+
+/* TARJETAS DE NIVELES */
+#levelsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.level-card {
+    background: #f8fff9;
+    border: 1px solid #d9f5e3;
+    border-left: 6px solid rgb(29, 179, 102);
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 5px;
+    transition: box-shadow 0.2s;
+}
+
+.level-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+
+.level-card h4 {
+    color: rgb(29, 145, 91);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.level-card p {
+    color: #777;
+    margin-bottom: 0;
+}
+
+.level-card video {
+    width: 100%;
+    max-height: 420px;
+    margin-top: 18px;
+    border-radius: 12px;
+    background: #222;
+}
+
+/* SEPARADOR */
+.detalle-panel hr {
+    border-color: #d9f5e3;
+    opacity: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+    .detalle-container {
+        padding-top: 25px;
+        padding-bottom: 35px;
+    }
+
+    .detalle-panel {
+        padding: 22px;
+    }
+
+    .titulo-curso {
+        font-size: 1.8rem;
+    }
+
+    .imagen-curso {
+        height: 210px;
+    }
+
+    .precio-curso {
+        font-size: 1.7rem;
+    }
+
+    .titulo-niveles {
+        font-size: 1.5rem;
+    }
+}

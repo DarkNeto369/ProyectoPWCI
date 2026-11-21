@@ -43,10 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return elemento;
     }
 
-    // =====================================
-    // 1. CARGAR CURSOS DEL ESTUDIANTE
-    // =====================================
-
+    // Cargar cursos
     function cargarCursos() {
 
         tituloLista.textContent = 'Mis cursos';
@@ -135,10 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    // =====================================
-    // 2. CARGAR CONVERSACIONES DEL INSTRUCTOR
-    // =====================================
-
+    // Cargar conversaciones
     function cargarConversaciones() {
 
         tituloLista.textContent = 'Conversaciones';
@@ -227,10 +221,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    // =====================================
-    // 3. ABRIR CONVERSACIÓN
-    // =====================================
-
+    // Abrir conversación
     function abrirConversacion(conversacion) {
 
         if (!conversacion.id_curso || !conversacion.id_contacto) {
@@ -268,10 +259,6 @@ document.addEventListener('DOMContentLoaded', function () {
         inputMensaje.focus();
 
     }
-
-    // =====================================
-    // 4. CARGAR MENSAJES
-    // =====================================
 
     function cargarMensajes() {
 
@@ -368,10 +355,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    // =====================================
-    // 5. ENVIAR MENSAJE
-    // =====================================
-
+    // Enviar mensaje
     formularioMensaje.addEventListener('submit', function (e) {
 
         e.preventDefault();
@@ -451,10 +435,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
-    // =====================================
-    // 6. CARGA INICIAL SEGÚN EL ROL
-    // =====================================
-
+    // Cargar según rol
     if (ROL_USUARIO === 'estudiante') {
 
         cargarCursos();

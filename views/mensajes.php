@@ -28,11 +28,13 @@ $rolUsuario = $_SESSION['rol'] ?? '';
 
             <div class="mensajes-container">
 
-                <h2 class="main-title">Mensajes privados</h2>
+                <div class="encabezado">
+                    <h3 class="main-title">Mensajes privados</h3>
 
-                <p class="subtitle">
-                    Comunícate con tus instructores y estudiantes.
-                </p>
+                    <p class="subtitle">
+                        Comunícate con tus instructores y estudiantes.
+                    </p>
+                </div>
 
                 <div class="mensajes-panel">
 

@@ -14,33 +14,30 @@
 </head>
 
 <body>
-
-    <!-- HEADER COMPARTIDO -->
     <?php include 'inc/header.php'; ?>
 
     <main class="container mis-cursos-container">
-
-        <!-- ENCABEZADO -->
+        <br>
         <section class="encabezado-cursos">
             <div>
-                <span class="etiqueta-cursos">MI APRENDIZAJE</span>
+                <!--<span class="etiqueta-cursos">MI APRENDIZAJE</span>-->
 
-                <h1 id="tituloCursos">
+                <h2 id="tituloCursos">
                     Mis cursos
-                </h1>
+                </h2>
 
-                <p id="descripcionCursos">
+                <!--<p id="descripcionCursos">
                     Continúa aprendiendo y lleva tu conocimiento al siguiente nivel.
-                </p>
+                </p>-->
             </div>
         </section>
 
         <!-- LISTA DE CURSOS -->
         <section class="seccion-cursos">
 
-            <div class="d-flex justify-content-between align-items-center mb-4">
+            <!--<div class="d-flex justify-content-between align-items-center mb-4">
                 <h2>Mis inscripciones</h2>
-            </div>
+            </div>-->
 
             <div id="listaCursos" class="row g-4">
 
