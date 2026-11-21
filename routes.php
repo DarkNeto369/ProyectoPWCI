@@ -38,63 +38,16 @@ $router->post('/api/calificaciones', 'controllers/api/calificaciones/registrar.p
 $router->get('/api/calificaciones', 'controllers/api/calificaciones/promedio.php');
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Mis rutas
 $router->post('/registro', 'controllers/registro.php');
-$router->post('/login', 'controllers/login.php');
 
-// Rutas de la API propia de cursos
+$router->post('/login', 'controllers/login.php');
 
 
 // PayPal
 $router->post('/api/paypal/prueba', 'test/prueba_paypal.php');
 
 $router->get('/paypal/retorno', 'controllers/paypal/retorno.php');
-
-
-
-
-
-// Cualquier usuario con sesión iniciada
-//$router->get('/mis-cursos', 'controllers/mis_cursos.php')->only('auth');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Solo administradores
@@ -117,19 +70,13 @@ $router->get('/detalle-pago', 'views/detalle-pago.php')->only('auth');
 $router->get('/detalle-curso-instructor', 'views/detalle-curso-instructor.php')->only('instructor');
 
 
-
-
-
-
-
-
 $router->get('/cerrar-sesion', 'controllers/cerrar-sesion.php');
 
 
 // Crear curso (Solo instructores)
 $router->get('/crear-curso', 'views/crear-curso.php')->only('instructor');
 
-    // Registrar la compra de un curso (Solo estudiantes)
+// Registrar la compra de un curso (Solo estudiantes)
 $router->post('/api/compras', 'controllers/comprar-curso.php')->only('estudiante');
 
 // Mis cursos (Solo estudiantes)
@@ -167,45 +114,22 @@ $router->get('/api-mensajes', 'controllers/mensajes.php')->only('auth');
 $router->post('/api-mensajes', 'controllers/mensajes.php')->only('auth');
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Reporte de ventas (Solo instructores)
-$router->get('/reporte-ventas', 'views/reporte-ventas.php')
-    ->only('instructor');
+$router->get('/reporte-ventas', 'views/reporte-ventas.php')->only('instructor');
 
 // Datos del reporte de ventas
-$router->get('/reporte-ventas/datos', 'controllers/ventas/obtener.php')
-    ->only('instructor');
+$router->get('/reporte-ventas/datos', 'controllers/ventas/obtener.php')->only('instructor');
 
 // Categorías del reporte de ventas
-$router->get('/reporte-ventas/categorias', 'controllers/ventas/categorias.php')
-    ->only('instructor');
+$router->get('/reporte-ventas/categorias', 'controllers/ventas/categorias.php')->only('instructor');
 
 
 
 // Reporte de usuarios (Solo administradores)
-$router->get('/reporte-usuarios', 'controllers/reporte-admin/obtener.php')
-    ->only('administrador');
+$router->get('/reporte-usuarios', 'controllers/reporte-admin/obtener.php')->only('administrador');
 
+$router->get('/perfil', 'views/perfil.php')->only('auth');
 
-
-    $router->get('/perfil', 'views/perfil.php')->only('auth');
-
-
-
-    $router->get('/perfil', 'controllers/perfil/obtener.php')->only('auth');
+$router->get('/perfil', 'controllers/perfil/obtener.php')->only('auth');
 
 $router->post('/perfil', 'controllers/perfil/obtener.php')->only('auth');

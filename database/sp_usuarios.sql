@@ -47,6 +47,24 @@ BEGIN
 			SELECT *
 			FROM usuarios
 			WHERE correo = p_correo;
+            
+                    -- Modificar datos del usuario
+        WHEN 3 THEN
+
+            UPDATE usuarios
+            SET
+                imagen_perfil = COALESCE(p_imagen_perfil, imagen_perfil),
+                nombre = p_nombre,
+                apellido = p_apellido,
+                genero = p_genero,
+                fecha_nacimiento = p_fecha_nacimiento,
+                correo = p_correo,
+                contra = CASE
+                    WHEN p_contra IS NULL OR p_contra = ''
+                    THEN contra
+                    ELSE p_contra
+                END
+            WHERE id_usuario = p_id_usuario;
 
         ELSE
             SIGNAL SQLSTATE '45000'
